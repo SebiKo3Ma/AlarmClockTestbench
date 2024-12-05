@@ -1,22 +1,4 @@
-module aclock (
-    input reset,               // Active high reset pulse to set time, alarm to 00:00:00
-    input clk,                 // A 10Hz input clock (used to generate real-time seconds)
-    input [1:0] H_in1,         // MSB hour digit for setting clock or alarm
-    input [3:0] H_in0,         // LSB hour digit for setting clock or alarm
-    input [3:0] M_in1,         // MSB minute digit for setting clock or alarm
-    input [3:0] M_in0,         // LSB minute digit for setting clock or alarm
-    input LD_time,             // If 1, load the clock with inputs H_in1, H_in0, M_in1, M_in0
-    input LD_alarm,            // If 1, load the alarm with inputs H_in1, H_in0, M_in1, M_in0
-    input STOP_al,             // If 1, stop the alarm (set Alarm output low)
-    input AL_ON,               // If high, the alarm function is ON
-    output reg Alarm,          // If time matches alarm and AL_ON is high, Alarm goes high
-    output [1:0] H_out1,       // Most significant digit of the hour
-    output [3:0] H_out0,       // Least significant digit of the hour
-    output [3:0] M_out1,       // Most significant digit of the minute
-    output [3:0] M_out0,       // Least significant digit of the minute
-    output [3:0] S_out1,       // Most significant digit of the second
-    output [3:0] S_out0        // Least significant digit of the second
-);
+module aclock (aclk_if inter);
 
     // Internal signals
     reg clk_1s;                // 1s clock signal

@@ -28,8 +28,10 @@ class transaction;
   
   constraint validTime{
     H_in1 <= 2;
-    H_in1 == 2 -> H_in0 <= 4;
+    H_in0 <= 9;
+    H_in1 == 2 -> H_in0 <= 3;
     M_in1 <= 6;
+    M_in0 <= 9;
   }
   
   constraint few_concurrent_loads{
@@ -38,7 +40,7 @@ class transaction;
   }
 
   function void display(string name = "");
-    $write("%0s: %3t - reset: %1b, time_input: %1b%1b:%1b%1b, LD_time: %1b, LD_alarm: %1b, STOP_al: %1b, AL_ON: %1b\n", name, $time, reset, H_in1, H_in0, M_in1, M_in0, LD_time, LD_alarm, STOP_al, AL_ON);
+    $write("%0s: %3t - reset: %1b, time_input: %1d%1d:%1d%1d, LD_time: %1b, LD_alarm: %1b, STOP_al: %1b, AL_ON: %1b\n", name, $time, reset, H_in1, H_in0, M_in1, M_in0, LD_time, LD_alarm, STOP_al, AL_ON);
   endfunction
   
   function void do_copy(transaction trans);

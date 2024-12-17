@@ -8,7 +8,7 @@ interface aclk_if(input clk); // A 10Hz input clock (used to generate real-time 
   logic       LD_time;  // If 1, load the clock with inputs H_in1, H_in0, M_in1, M_in0
   logic       LD_alarm; // If 1, load the alarm with inputs H_in1, H_in0, M_in1, M_in0
   logic       STOP_al;  // If 1, stop the alarm (set Alarm output low)
-  logic       AL_ON;    // If high, the alarm function is ON
+  logic       AL_ON;     // If high, the alarm function is ON
   
   logic       Alarm;    // If time matches alarm and AL_ON is high, Alarm goes high
   
@@ -60,11 +60,11 @@ interface aclk_if(input clk); // A 10Hz input clock (used to generate real-time 
     
     trans.Alarm    = Alarm;
     trans.H_out1   = H_out1;
- 	trans.H_out0   = H_out0;
- 	trans.M_out1   = M_out1;
-	trans.M_out0   = M_out0;
-	trans.S_out1   = S_out1;
-	trans.S_out0   = S_out0;
+    trans.H_out0   = H_out0;
+    trans.M_out1   = M_out1;
+    trans.M_out0   = M_out0;
+    trans.S_out1   = S_out1;
+    trans.S_out0   = S_out0;
     
     return trans;
   endfunction

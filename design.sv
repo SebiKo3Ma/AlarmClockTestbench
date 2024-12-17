@@ -28,8 +28,8 @@ module aclock (aclk_if inter);
     /************************************************/
     /************** Clock operation ****************/
     /************************************************/
-    always @(posedge clk_1s or posedge reset) begin
-        if (reset) begin
+    always @(posedge clk_1s or posedge inter.reset) begin
+        if (inter.reset) begin
             // Reset all values
             a_hour1 <= 2'b00;
             a_hour0 <= 4'b0000;
@@ -37,23 +37,23 @@ module aclock (aclk_if inter);
             a_min0  <= 4'b0000;
             a_sec1  <= 4'b0000;
             a_sec0  <= 4'b0000;
-            tmp_hour <= H_in1 * 10 + H_in0;
-            tmp_minute <= M_in1 * 10 + M_in0;
+            tmp_hour <= inter.H_in1 * 10 + inter.H_in0;
+            tmp_minute <= inter.M_in1 * 10 + inter.M_in0;
             tmp_second <= 0;
         end else begin
-            if (LD_alarm) begin
+            if (inter.LD_alarm) begin
                 // Set alarm time when LD_alarm is 1
-                a_hour1 <= H_in1;
-                a_hour0 <= H_in0;
-                a_min1  <= M_in1;
-                a_min0  <= M_in0;
+                a_hour1 <= inter.H_in1;
+                a_hour0 <= inter.H_in0;
+                a_min1  <= inter.M_in1;
+                a_min0  <= inter.M_in0;
                 a_sec1  <= 4'b0000;
                 a_sec0  <= 4'b0000;
             end 
-            if (LD_time) begin
+            if (inter.LD_time) begin
                 // Set time when LD_time is 1
-                tmp_hour <= H_in1 * 10 + H_in0;
-                tmp_minute <= M_in1 * 10 + M_in0;
+                tmp_hour <= inter.H_in1 * 10 + inter.H_in0;
+                tmp_minute <= inter.M_in1 * 10 + inter.M_in0;
                 tmp_second <= 0;
             end else begin
                 // Normal clock operation
@@ -76,8 +76,8 @@ module aclock (aclk_if inter);
     /************************************************/
     /************ Generate 1-second clock ***********/
     /************************************************/
-    always @(posedge clk or posedge reset) begin
-        if (reset) begin
+    always @(posedge inter.clk or posedge inter.reset) begin
+        if (inter.reset) begin
             tmp_1s <= 0;
             clk_1s <= 0;
         end else begin
@@ -110,26 +110,26 @@ module aclock (aclk_if inter);
         c_sec0 = tmp_second - c_sec1 * 10; 
     end
 
-    assign H_out1 = c_hour1;  // Most significant digit of the hour
-    assign H_out0 = c_hour0;  // Least significant digit of the hour
-    assign M_out1 = c_min1;   // Most significant digit of the minute
-    assign M_out0 = c_min0;   // Least significant digit of the minute
-    assign S_out1 = c_sec1;   // Most significant digit of the second
-    assign S_out0 = c_sec0;   // Least significant digit of the second
+    assign inter.H_out1 = c_hour1;  // Most significant digit of the hour
+    assign inter.H_out0 = c_hour0;  // Least significant digit of the hour
+    assign inter.M_out1 = c_min1;   // Most significant digit of the minute
+    assign inter.M_out0 = c_min0;   // Least significant digit of the minute
+    assign inter.S_out1 = c_sec1;   // Most significant digit of the second
+    assign inter.S_out0 = c_sec0;   // Least significant digit of the second
 
     /************************************************/
     /**************** Alarm Function ****************/
     /************************************************/
-    always @(posedge clk_1s or posedge reset) begin
-        if (reset) 
-            Alarm <= 0; 
+    always @(posedge clk_1s or posedge inter.reset) begin
+        if (inter.reset) 
+            inter.Alarm <= 0; 
         else begin
             if ({a_hour1, a_hour0, a_min1, a_min0, a_sec1, a_sec0} == {c_hour1, c_hour0, c_min1, c_min0, c_sec1, c_sec0}) begin
-                if (AL_ON) 
-                    Alarm <= 1;  // Alarm goes high if time matches and AL_ON is high
+              if (inter.AL_ON) 
+                    inter.Alarm <= 1;  // Alarm goes high if time matches and AL_ON is high
             end
-            if (STOP_al) 
-                Alarm <= 0;  // Alarm goes low when STOP_al is high
+            if (inter.STOP_al) 
+                inter.Alarm <= 0;  // Alarm goes low when STOP_al is high
         end
     end
 

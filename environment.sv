@@ -9,7 +9,6 @@ class environment;
   transaction gen2drv[$];
   transaction mon2cmp[$];
 
-  // every component has a name and there is a common verbosity for the entire environment
   function new(virtual aclk_if inter);
     this.inter = inter;
     gen    = new();
@@ -17,8 +16,7 @@ class environment;
     mon = new(inter);
   endfunction
 
-  // the reset phase - all inputs are set on the default value
-  task pre_main(); // !!!!!!!!!!!!!!!!! driverul ar trebui sa aiba functia de reset, orice semnal prin driver -> puteam sa am un driver in if care face functia daca e cazul
+  task pre_main(); 
     this.inter.do_reset();
   endtask
 
@@ -30,9 +28,7 @@ class environment;
     join_any
   endtask
 
-  // the main task - follows  pre_test   ->   test   ->   post_test
-  //                        (reset all)  (main action) (display report)
-  task run;
+ task run;
     pre_main();
     main();
     $finish;

@@ -28,7 +28,7 @@ class transaction;
   
   constraint validTime{
     H_in1 <= 2;
-    H_in2 == 2 -> H_in0 <= 4;
+    H_in1 == 2 -> H_in0 <= 4;
     M_in1 <= 6;
   }
   
@@ -36,14 +36,9 @@ class transaction;
     LD_time  -> !LD_alarm dist {1:/19, 0:/1};
     LD_alarm -> !LD_time  dist {1:/19, 0:/1};
   }
-  
-  constraint data_only_when_write_enable{
-    write_en  -> data_in inside {['h00:'hFF]};
-    !write_en -> data_in == 'h00;
-  }
 
   function void display(string name = "");
-    $write("%0s: %3t - reset: %1b, time_input: %1b%1b:%1b%1b, LD_time: %1b, LD_Alarm: %1b, STOP_al: %1b, AL_ON: %1b", name, $time, H_in1, H_in2, M_in1, M_in2, LD_time, LD_Alarm, STOP_al, AL_ON);
+    $write("%0s: %3t - reset: %1b, time_input: %1b%1b:%1b%1b, LD_time: %1b, LD_alarm: %1b, STOP_al: %1b, AL_ON: %1b\n", name, $time, reset, H_in1, H_in0, M_in1, M_in0, LD_time, LD_alarm, STOP_al, AL_ON);
   endfunction
   
   function void do_copy(transaction trans);

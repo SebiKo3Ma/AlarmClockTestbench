@@ -1,7 +1,7 @@
 class driver;
   virtual aclk_if m_vif;
 
-  function new(virtual fifo_if m_vif);
+  function new(virtual aclk_if m_vif);
     this.m_vif = m_vif;
   endfunction
 

@@ -2,7 +2,7 @@ class environment;
   //declare all the components
   generator gen;
   driver    drv;
-  //monitor   mon;
+  monitor   mon;
 
   virtual aclk_if inter;
 
@@ -13,7 +13,7 @@ class environment;
     this.inter = inter;
     gen    = new();
     drv   = new(inter);
-    //mon = new(inter);
+    mon = new(inter);
   endfunction
 
   task pre_main(); 
@@ -24,7 +24,7 @@ class environment;
     gen.run(gen2drv);
     fork
     	drv.run(gen2drv);
-    	//mon.run(mon2cmp);
+    	mon.run(mon2cmp);
     join_any
   endtask
 

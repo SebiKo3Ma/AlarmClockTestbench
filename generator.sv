@@ -3,7 +3,7 @@ class generator;
   bit first;
     
   constraint num_of_trans_range {
-    num_of_trans inside {[20:30]};
+    num_of_trans inside {[50:60]};
   }
   
   function new();

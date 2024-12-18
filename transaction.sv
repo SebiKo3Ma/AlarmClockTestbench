@@ -35,8 +35,7 @@ class transaction;
   }
   
   constraint few_concurrent_loads{
-    LD_time  -> !LD_alarm dist {1:/19, 0:/1};
-    LD_alarm -> !LD_time  dist {1:/19, 0:/1};
+    LD_time && LD_alarm dist {1:/1, 0:/19};
   }
 
   function void display(string name = "");

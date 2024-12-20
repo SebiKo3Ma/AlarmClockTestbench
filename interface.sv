@@ -21,7 +21,7 @@ interface aclk_if(input clk); // A 10Hz input clock (used to generate real-time 
     
   // set all the inputs on the default value
   function do_reset();
-    reset    = 1'b0;
+    reset    = 1'b1;
     H_in1    = 2'b0;
     H_in0    = 4'b0;
     M_in1    = 4'b0;

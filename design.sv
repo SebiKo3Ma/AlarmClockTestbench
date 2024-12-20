@@ -64,11 +64,11 @@ module aclock (aclk_if inter);
                     if (tmp_minute >= 59) begin
                         tmp_minute <= 0;
                         tmp_hour <= tmp_hour + 1;
-                        if (tmp_hour >= 24) begin
-                            tmp_hour <= 0;
                         end
                     end
                 end
+                if (tmp_hour >= 23 && tmp_minute >= 59 && tmp_second >= 59 ) begin
+                    tmp_hour <= 0;
             end
         end
     end

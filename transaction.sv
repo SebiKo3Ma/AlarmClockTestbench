@@ -33,6 +33,17 @@ class transaction;
     M_in1 <= 6;
     M_in0 <= 9;
   }
+
+  constraint no_concurrent_transactions{
+    LD_time -> STOP_al <= 1'b0;
+    LD_time -> AL_ON <= 1'b0;
+    AL_ON -> LD_time <= 1'b0;
+    AL_ON -> LD_alarm <= 1'b0;
+    AL_ON -> STOP_al <= 1'b0;
+    STOP_al -> LD_time <= 1'b0;
+    STOP_al -> LD_alarm <= 1'b0;
+    STOP_al -> AL_ON <= 1'b0;
+  }
   
   constraint few_concurrent_loads{
     LD_time && LD_alarm dist {1:/1, 0:/19};
@@ -60,6 +71,17 @@ class transaction;
     this.M_out0   = trans.M_out0;
     this.S_out1   = trans.S_out1;
     this.S_out0   = trans.S_out0;
+  endfunction
+
+  function bit compare(transaction trans);
+    if(this.Alarm    !== trans.Alarm)   return 0;
+    if(this.H_out1   !== trans.H_out1)  return 0;
+    if(this.H_out0   !== trans.H_out0)  return 0;
+    if(this.M_out1   !== trans.M_out1)  return 0;
+    if(this.M_out0   !== trans.M_out0)  return 0;
+    if(this.S_out1   !== trans.S_out1)  return 0;
+    if(this.S_out0   !== trans.S_out0)  return 0;
+    return 1;
   endfunction
 endclass
 

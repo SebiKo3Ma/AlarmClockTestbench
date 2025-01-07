@@ -33,17 +33,6 @@ class transaction;
     M_in1 <= 6;
     M_in0 <= 9;
   }
-
-  constraint no_concurrent_transactions{
-    LD_time -> STOP_al <= 1'b0;
-    LD_time -> AL_ON <= 1'b0;
-    AL_ON -> LD_time <= 1'b0;
-    AL_ON -> LD_alarm <= 1'b0;
-    AL_ON -> STOP_al <= 1'b0;
-    STOP_al -> LD_time <= 1'b0;
-    STOP_al -> LD_alarm <= 1'b0;
-    STOP_al -> AL_ON <= 1'b0;
-  }
   
   constraint few_concurrent_loads{
     LD_time && LD_alarm dist {1:/1, 0:/19};

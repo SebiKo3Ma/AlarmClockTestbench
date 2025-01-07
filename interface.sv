@@ -1,4 +1,4 @@
-interface aclk_if(input clk); // A 10Hz input clock (used to generate real-time seconds)
+interface aclk_if(input clk, tb_clk); // A 10Hz input clock (used to generate real-time seconds)
   logic       reset; // Active high reset pulse to set time, alarm to 00:00:00
   logic [1:0] H_in1; // MSB hour digit for setting clock or alarm
   logic [3:0] H_in0; // LSB hour digit for setting clock or alarm

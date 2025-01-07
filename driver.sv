@@ -15,12 +15,12 @@ class driver;
         gen2driv[i].display("DRV");
         
         // send the transaction to the interface
-        @(posedge m_vif.clk);
+        @(posedge m_vif.tb_clk);
         m_vif.send_sig(gen2driv[i]);
       end
     end
     
     // wait some time for the transaction to finish
-    repeat(2) @(posedge m_vif.clk);
+    repeat(2) @(posedge m_vif.tb_clk);
   endtask
 endclass

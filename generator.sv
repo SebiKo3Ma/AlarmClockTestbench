@@ -12,7 +12,7 @@ class generator;
   task run(ref transaction gen2driv[$]);
     // randomize the number of transactions
     if(!this.randomize()) $fatal("Failed randomization!");
-    
+
     repeat(num_of_trans)
       begin
         // create and randomize the transaction

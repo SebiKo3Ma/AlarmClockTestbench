@@ -25,7 +25,7 @@ class transaction;
   constraint mostly_inactive_reset{
     reset dist {0:/19, 1:/1};
   }
-  
+
   constraint validTime{
     H_in1 <= 2;
     H_in0 <= 9;
@@ -36,6 +36,15 @@ class transaction;
   
   constraint few_concurrent_loads{
     LD_time && LD_alarm dist {1:/1, 0:/19};
+  }
+
+  constraint alarm_mostly_on{
+    AL_ON dist {1:/19, 0:/1};
+  }
+
+  constraint few_irrelevant_stops{
+    (!AL_ON) -> STOP_al dist {1:/1, 0:/19};
+    STOP_al dist {1:/1, 0:/10};
   }
 
   function void display(string name = "");

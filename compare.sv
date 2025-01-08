@@ -1,37 +1,37 @@
 class compare;
   reference refer;
-  int nr_failed; // number of failed tests
+  
+  int nr_failed; // number of failed transactions
+  int nr_total;  // number of total transactions
+  int nr_passed; // number of passed transactions
 
   function new(reference refer);
-    this.nr_failed = 1'b0;
     this.refer     = refer;
+    this.nr_failed = 0;
+    this.nr_total  = 0;
+    this.nr_passed = 0;
   endfunction
-
-  task run(const ref transaction mon2cmp[$]);
-    int j = 0; // id of the transaction from the wa monitor queue
+  
+  task run(ref transaction mon2cmp[$]);
     transaction ref_trans;
-    transaction trans = new();
-
-    if(mon2cmp.size())
-      foreach(mon2cmp[i]) begin
-
-        trans = mon2cmp[i]; // the original transaction that is going to be compared
-        trans.display("Trans from monitor");
-
-        ref_trans = refer.get_output(trans); // the expected output transaction
-        ref_trans.display("Expected transaction");
-
-        get_result(trans.compare(ref_trans), i);
+    
+    if(mon2cmp.size()) begin
+      foreach(mon2cmp[i]) begin 
+        nr_total++;
+        ref_trans = new();
+        ref_trans = refer.process(mon2cmp[i]);
+        
+        ref_trans.display("REF");
+        mon2cmp[i].display("CMP");
+        if(mon2cmp[i].do_compare(ref_trans)) begin
+          nr_passed++;
+          $display("Transaction %0d: Correct %0d", nr_total, nr_passed);
+        end else begin
+          nr_failed++;
+          $display("Transaction %0d: Incorrect %0d", nr_total, nr_failed);
+        end
       end
-  endtask
-
-  function void get_result(bit result, int i);
-    if(result) begin // test nr.i passed
-      $display(" ---> Test %0d passed", i);
-    end else begin   // test nr.i failed
-      $display(" ---> Test %0d failed", i);
-      nr_failed++;
     end
-  endfunction
-
+    $display("Total: %0d\nPassed: %0d\nFailed: %0d", nr_total, nr_passed, nr_failed);
+  endtask
 endclass

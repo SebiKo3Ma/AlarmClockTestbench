@@ -3,6 +3,8 @@ class environment;
   generator gen;
   driver    drv;
   monitor   mon;
+  reference refer;
+  compare   cmp;
 
   virtual aclk_if inter;
 
@@ -11,9 +13,11 @@ class environment;
 
   function new(virtual aclk_if inter);
     this.inter = inter;
-    gen    = new();
+    gen   = new();
     drv   = new(inter);
-    mon = new(inter);
+    mon   = new(inter);
+    refer = new();
+    cmp   = new(refer);
   endfunction
 
   task pre_main(); 
@@ -26,6 +30,7 @@ class environment;
     	drv.run(gen2drv);
     	mon.run(mon2cmp);
     join_any
+    cmp.run(mon2cmp);
   endtask
 
  task run;

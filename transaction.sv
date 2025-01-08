@@ -30,7 +30,7 @@ class transaction;
     H_in1 <= 2;
     H_in0 <= 9;
     H_in1 == 2 -> H_in0 <= 3;
-    M_in1 <= 6;
+    M_in1 <= 5;
     M_in0 <= 9;
   }
   
@@ -73,7 +73,7 @@ class transaction;
     this.S_out0   = trans.S_out0;
   endfunction
 
-  function bit compare(transaction trans);
+  function bit do_compare(transaction trans);
     if(this.Alarm    !== trans.Alarm)   return 0;
     if(this.H_out1   !== trans.H_out1)  return 0;
     if(this.H_out0   !== trans.H_out0)  return 0;

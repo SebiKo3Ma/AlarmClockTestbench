@@ -8,12 +8,15 @@ class environment;
 
   virtual aclk_if inter;
 
+  int mode = 0;
+
   transaction gen2drv[$];
   transaction mon2cmp[$];
 
-  function new(virtual aclk_if inter);
+  function new(virtual aclk_if inter, int mode);
     this.inter = inter;
-    gen   = new();
+    this.mode = mode;
+    gen   = new(mode);
     drv   = new(inter);
     mon   = new(inter);
     refer = new();
@@ -36,6 +39,5 @@ class environment;
  task run;
     pre_main();
     main();
-    $finish;
   endtask
 endclass

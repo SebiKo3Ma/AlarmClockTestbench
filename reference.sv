@@ -21,10 +21,10 @@ class reference;
     ref_trans = new();
     
     if(trans.reset != 1'b0) begin
-        last_H1 = 2'b00;
-        last_H0 = 4'b0000;
-        last_M1 = 4'b0000;
-        last_M0 = 4'b0000;
+        last_H1 = trans.H_in1;
+        last_H0 = trans.H_in0;
+        last_M1 = trans.M_in1;
+        last_M0 = trans.M_in0;
         last_S1 = 4'b0000;
         last_S0 = 4'b0000;
 

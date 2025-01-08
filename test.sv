@@ -1,8 +1,14 @@
 program test(aclk_if inter);
-  environment env;  
+  environment env, env2;  
   
   initial begin
-    env = new(inter);
+    //24h clock operation test
+    env = new(inter, 1);
     env.run();
+
+    env2 = new(inter, 0);
+    env2.run();
+
+    $finish;
   end
 endprogram

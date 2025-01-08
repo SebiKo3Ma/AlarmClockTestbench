@@ -10,7 +10,7 @@ class monitor;
     forever begin
       // get the signals from the interface
       transaction trans;
-      @(posedge m_vif.clk);
+      @(posedge m_vif.tb_clk);
       trans = m_vif.get_sig();
       
       // save the transaction to a new variable each time

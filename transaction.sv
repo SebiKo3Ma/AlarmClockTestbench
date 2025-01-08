@@ -48,7 +48,9 @@ class transaction;
   }
 
   function void display(string name = "");
-    $write("%0s: %3t - reset: %1b, time_input: %1d%1d:%1d%1d, LD_time: %1b, LD_alarm: %1b, STOP_al: %1b, AL_ON: %1b\n", name, $time, reset, H_in1, H_in0, M_in1, M_in0, LD_time, LD_alarm, STOP_al, AL_ON);
+    $write("%0s: %3t - reset: %1b, time_input: %1d%1d:%1d%1d, time_output: %1d%1d:%1d%1d:%1d%1d, LD_time: %1b, LD_alarm: %1b, STOP_al: %1b, AL_ON: %1b, Alarm: %1d\n", 
+    name, $time, reset, H_in1, H_in0, M_in1, M_in0, H_out1, H_out0, M_out1, M_out0, S_out1, S_out0,
+    LD_time, LD_alarm, STOP_al, AL_ON, Alarm);
   endfunction
   
   function void do_copy(transaction trans);

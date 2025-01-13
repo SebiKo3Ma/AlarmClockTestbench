@@ -5,6 +5,7 @@ driver.sv
 monitor.sv
 reference.sv
 compare.sv
+coverage.sv
 environment.sv
 test.sv
 design.sv

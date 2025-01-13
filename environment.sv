@@ -5,6 +5,7 @@ class environment;
   monitor   mon;
   reference refer;
   compare   cmp;
+  coverage cov;
 
   virtual aclk_if inter;
 
@@ -21,6 +22,7 @@ class environment;
     mon   = new(inter);
     refer = new();
     cmp   = new(refer);
+    cov   = new();
   endfunction
 
   task pre_main(); 
@@ -34,10 +36,12 @@ class environment;
     	mon.run(mon2cmp);
     join_any
     cmp.run(mon2cmp);
+    cov.run();
   endtask
 
  task run;
     pre_main();
     main();
+    cov.report();
   endtask
 endclass

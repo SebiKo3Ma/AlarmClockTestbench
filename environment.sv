@@ -22,7 +22,7 @@ class environment;
     mon   = new(inter);
     refer = new();
     cmp   = new(refer);
-    cov   = new();
+    cov   = new(inter);
   endfunction
 
   task pre_main(); 
@@ -36,7 +36,6 @@ class environment;
     	mon.run(mon2cmp);
     join_any
     cmp.run(mon2cmp);
-    cov.run();
   endtask
 
  task run;

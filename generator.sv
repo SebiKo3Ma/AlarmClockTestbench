@@ -10,7 +10,7 @@ class generator;
 
   constraint num_of_trans_range {
     if(mode == 0)
-      num_of_trans inside {[50:60]};
+      num_of_trans inside {[500:600]};
     else if(mode == 1)
       num_of_trans inside {[86500:86600]};
     else

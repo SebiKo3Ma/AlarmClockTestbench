@@ -43,7 +43,7 @@ class transaction;
   }
 
   constraint few_irrelevant_stops{
-    (!AL_ON) -> STOP_al dist {1:/1, 0:/19};
+    (!AL_ON) -> STOP_al dist {1:/1, 0:/9};
     STOP_al dist {1:/1, 0:/10};
   }
 

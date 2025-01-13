@@ -21,12 +21,10 @@ class coverage;
             bins valid_values[] = {[0:9]};
         }
 
-        // h_x: cross ho1, ho0 {
-        //     ignore_bins invalid_hours = binsof(ho1) intersect {2} &&
-        //                                 binsof(ho0) intersect {[4:9]};
-        // }
-
-        // all_x: cross ho1, ho0, mo1, mo0, so1, so0;
+        all_x: cross ho1, ho0, mo1, mo0, so1, so0{
+            ignore_bins invalid_hours = binsof(ho1) intersect {2} &&
+                                        binsof(ho0) intersect {[4:9]};
+        }
     endgroup: time_output
 
     function new(virtual aclk_if inter);

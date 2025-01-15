@@ -8,5 +8,6 @@ compare.sv
 coverage.sv
 environment.sv
 test.sv
+test_24.sv
 design.sv
 testbench.sv

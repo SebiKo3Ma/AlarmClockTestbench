@@ -5,6 +5,7 @@ module testbench;
   aclk_if IF(.clk(clk), .tb_clk(tb_clk));
   aclock DUT (.inter(IF));
   test test(.inter(IF));
+  //test_24 test(.inter(IF));
 
   // standard clock given as input
   initial begin

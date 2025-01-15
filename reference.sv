@@ -64,7 +64,7 @@ class reference;
         ref_trans.Alarm = 1'b0;
     end else begin
       rst = 1'b0;
-      if(alarm_H1 == last_H1 && alarm_H0 == last_H0 && alarm_M1 == last_M1 && alarm_M0 == last_M0) begin
+      if(alarm_H1 == last_H1 && alarm_H0 == last_H0 && alarm_M1 == last_M1 && alarm_M0 == last_M0 && last_S0 == 4'd0 && last_S1 == 4'd0) begin
         if(trans.AL_ON) begin
           al_sound = 1'b1;
         end

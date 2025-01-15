@@ -70,6 +70,9 @@ class reference;
         end
       end
 
+      $display("\nLast_time: %1d%1d:%1d%1d:%1d%1d, Alarm: %1d%1d:%1d%1d, Sound: %1d", last_H1, last_H0, last_M1, last_M0, last_S1, last_S0, alarm_H1, alarm_H0, alarm_M1, alarm_M0, al_sound);
+    
+
       if(trans.LD_time) begin
         last_H1 = trans.H_in1;
         last_H0 = trans.H_in0;
@@ -148,7 +151,6 @@ class reference;
     ref_trans.STOP_al = trans.STOP_al;
     ref_trans.AL_ON = trans.AL_ON;
     
-    $display("\nLast_time: %1d%1d:%1d%1d:%1d%1d, Alarm: %1d%1d:%1d%1d, Sound: %1d", last_H1, last_H0, last_M1, last_M0, last_S1, last_S0, alarm_H1, alarm_H0, alarm_M1, alarm_M0, al_sound);
     return ref_trans;
   endfunction
 endclass

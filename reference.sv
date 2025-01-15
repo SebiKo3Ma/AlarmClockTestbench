@@ -67,8 +67,6 @@ class reference;
       if(alarm_H1 == last_H1 && alarm_H0 == last_H0 && alarm_M1 == last_M1 && alarm_M0 == last_M0) begin
         if(trans.AL_ON) begin
           al_sound = 1'b1;
-        end else begin
-          al_sound = 1'b0;
         end
       end
 

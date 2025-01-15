@@ -3,10 +3,10 @@ program test(aclk_if inter);
   
   initial begin
     //24h clock operation test
-    // env = new(inter, 1);
+    // env = new(inter, 1, 1);
     // env.run();
 
-    env2 = new(inter, 0);
+    env2 = new(inter, 0, 0);
     env2.run();
 
     $finish;

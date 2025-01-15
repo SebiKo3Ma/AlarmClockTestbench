@@ -10,19 +10,21 @@ class environment;
   virtual aclk_if inter;
 
   int mode = 0;
+  bit select = 0;
 
   transaction gen2drv[$];
   transaction mon2cmp[$];
 
-  function new(virtual aclk_if inter, int mode);
+  function new(virtual aclk_if inter, int mode, bit select);
     this.inter = inter;
     this.mode = mode;
+    this.select = select;
     gen   = new(mode);
     drv   = new(inter);
     mon   = new(inter);
     refer = new();
     cmp   = new(refer);
-    cov   = new(inter);
+    cov   = new(inter, select);
   endfunction
 
   task pre_main(); 

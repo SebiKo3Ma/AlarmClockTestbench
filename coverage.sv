@@ -58,11 +58,14 @@ class coverage;
         }
     endgroup: trigger_stop_al
 
-    function new(virtual aclk_if inter);
+    function new(virtual aclk_if inter, bit select);
         this.inter = inter;
-        //time_output = new();
-        set_time_alarm = new();
-        trigger_stop_al = new();
+        if(select) begin
+            time_output = new();
+        end else begin
+            set_time_alarm = new();
+            trigger_stop_al = new();
+        end
     endfunction
 
     function void report();

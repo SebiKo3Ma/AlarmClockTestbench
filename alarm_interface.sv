@@ -39,20 +39,20 @@ task init();
 endtask 
   
   // the transaction received will be sent to the interface
-//   task send_sig(transaction trans);
-//     @(driver_clk);
-//     STOP_al <= trans.STOP_al;
-//     AL_ON   <= trans.AL_ON;
-//   endtask
+  task send_sig(alarm_transaction trans);
+    @(driver_clk);
+    STOP_al <= trans.STOP_al;
+    AL_ON   <= trans.AL_ON;
+  endtask
   
-//   // the transaction received will be sent to the interface
-//   function transaction get_sig();
-//     automatic transaction trans = new();
-//     trans.STOP_al = STOP_al;
-//     trans.AL_ON   = AL_ON;
-//     trans.Alarm   = Alarm;
+  // the transaction received will be sent to the interface
+  function alarm_transaction get_sig();
+    automatic alarm_transaction trans = new();
+    trans.STOP_al = STOP_al;
+    trans.AL_ON   = AL_ON;
+    trans.Alarm   = Alarm;
     
-//     return trans;
-//   endfunction
+    return trans;
+  endfunction
   
 endinterface

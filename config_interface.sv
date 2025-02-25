@@ -68,41 +68,42 @@ task init();
     M_in0    = 4'b0;
     LD_time  = 1'b0;
     LD_alarm = 1'b0;
+    #10 reset = 1'b0;
 endtask 
   
-  // // the transaction received will be sent to the interface
-  // task send_sig(transaction trans);
-  //   @(driver_clk);
-  //   reset    <= trans.reset;
-  //   H_in1    <= trans.H_in1;
-  //   H_in0    <= trans.H_in0;
-  //   M_in1    <= trans.M_in1;
-  //   M_in0    <= trans.M_in0;
-  //   LD_time  <= trans.LD_time;
-  //   LD_alarm <= trans.LD_alarm;
-  //   STOP_al  <= trans.STOP_al;
-  //   AL_ON    <= trans.AL_ON;
-  // endtask
+  // the transaction received will be sent to the interface
+  task send_sig(config_transaction trans);
+    @(driver_clk);
+    reset    <= trans.reset;
+    H_in1    <= trans.H_in1;
+    H_in0    <= trans.H_in0;
+    M_in1    <= trans.M_in1;
+    M_in0    <= trans.M_in0;
+    LD_time  <= trans.LD_time;
+    LD_alarm <= trans.LD_alarm;
+    STOP_al  <= trans.STOP_al;
+    AL_ON    <= trans.AL_ON;
+  endtask
   
-  // // the transaction received will be sent to the interface
-  // function transaction get_sig();
-  //   automatic transaction trans = new();
-  //   trans.reset    = reset;
-  //   trans.H_in1    = H_in1;
-  //   trans.H_in0    = H_in0;
-  //   trans.M_in1    = M_in1;
-  //   trans.M_in0    = M_in0;
-  //   trans.LD_time  = LD_time;
-  //   trans.LD_alarm = LD_alarm;
+  // the transaction received will be sent to the interface
+  function config_transaction get_sig();
+    automatic config_transaction trans = new();
+    trans.reset    = reset;
+    trans.H_in1    = H_in1;
+    trans.H_in0    = H_in0;
+    trans.M_in1    = M_in1;
+    trans.M_in0    = M_in0;
+    trans.LD_time  = LD_time;
+    trans.LD_alarm = LD_alarm;
 
-  //   trans.H_out1   = H_out1;
-  //   trans.H_out0   = H_out0;
-  //   trans.M_out1   = M_out1;
-  //   trans.M_out0   = M_out0;
-  //   trans.S_out1   = S_out1;
-  //   trans.S_out0   = S_out0;
+    trans.H_out1   = H_out1;
+    trans.H_out0   = H_out0;
+    trans.M_out1   = M_out1;
+    trans.M_out0   = M_out0;
+    trans.S_out1   = S_out1;
+    trans.S_out0   = S_out0;
     
-  //   return trans;
-  // endfunction
+    return trans;
+  endfunction
   
 endinterface

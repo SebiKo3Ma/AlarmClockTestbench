@@ -71,11 +71,61 @@ class config_transaction;
 endclass
 
 class cr_config_transaction extends config_transaction;
+  function new();
+    super.new();
+    this.tr_type = CR;
+  endfunction
 
+  constraint validTime{
+    H_in1 <= 2;
+    H_in0 <= 9;
+    H_in1 == 2 -> H_in0 <= 3;
+    M_in1 <= 5;
+    M_in0 <= 9;
+  }
+
+  constraint high_time{
+    H_in1 == 2   dist {1:/7, 0:/3}
+    if(H_in1 == 2)
+      H_in0 > 2  dist{1:/8, 0:/2};
+    else
+      H_in0 > 7  dist {1:/9, 0:/1};
+    M_in1 > 4    dist{1:/6, 0:/4};
+    M_in0 > 7    dist {1:/9, 0:/1};
+  }
+endclass
+
+class op_config_transaction extends config_transaction;
+  function new();
+    super.new();
+    this.tr_type = OP;
+  endfunction
+
+  constraint validTime{
+    H_in1 <= 2;
+    H_in0 <= 9;
+    H_in1 == 2 -> H_in0 <= 3;
+    M_in1 <= 5;
+    M_in0 <= 9;
+  }
 endclass
 
 class il_config_transaction extends config_transaction;
+  function new();
+    super.new();
+    this.tr_type = IL;
+  endfunction
 
+  constraint illegal_time{
+    H_in1 >= 2;
+    if(H_in1 == 2)
+      H_in0 >= 5;
+    else 
+      H_in0 >= 10;
+
+    M_in1 >= 6;
+    M_in0 >= 10;
+  }
 endclass
 
 

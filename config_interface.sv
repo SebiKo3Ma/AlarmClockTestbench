@@ -40,6 +40,8 @@ clocking driver_clk @(posedge tb_clk);
     output M_in0;
     output LD_time;
     output LD_alarm;
+
+    //daca e nevoie, pune outputul DUT-ului ca input aici (in log de event ready)
 endclocking
 
 clocking monitor_clk @(posedge tb_clk);
@@ -73,8 +75,8 @@ endtask
   
   // the transaction received will be sent to the interface
   task send_sig(config_transaction trans);
-    @(driver_clk);
-    reset    <= trans.reset;
+    @(driver_clk); //driver_clk. la toate
+    driver_clk.reset    <= trans.reset;
     H_in1    <= trans.H_in1;
     H_in0    <= trans.H_in0;
     M_in1    <= trans.M_in1;
@@ -85,7 +87,7 @@ endtask
     AL_ON    <= trans.AL_ON;
   endtask
   
-  // the transaction received will be sent to the interface
+  // make it a task, use the clocking block
   function config_transaction get_sig();
     automatic config_transaction trans = new();
     trans.reset    = reset;

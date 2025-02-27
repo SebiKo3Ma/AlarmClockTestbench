@@ -28,7 +28,7 @@ class alarm_transaction;
     this.Alarm   = trans.Alarm;
   endfunction
 
-  function bit do_compare(config_transaction trans);
+  function bit do_compare(alarm_transaction trans);
     if(this.STOP_al !== trans.STOP_al) return 0;
     if(this.AL_ON   !== trans.AL_ON)   return 0;
     if(this.Alarm   !== trans.Alarm)   return 0;

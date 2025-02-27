@@ -85,7 +85,7 @@ class cr_config_transaction extends config_transaction;
   }
 
   constraint high_time{
-    H_in1 == 2   dist {1:/7, 0:/3}
+    H_in1 == 2   dist {1:/7, 0:/3};
     if(H_in1 == 2)
       H_in0 > 2  dist{1:/8, 0:/2};
     else

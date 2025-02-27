@@ -83,8 +83,6 @@ endtask
     M_in0    <= trans.M_in0;
     LD_time  <= trans.LD_time;
     LD_alarm <= trans.LD_alarm;
-    STOP_al  <= trans.STOP_al;
-    AL_ON    <= trans.AL_ON;
   endtask
   
   // make it a task, use the clocking block

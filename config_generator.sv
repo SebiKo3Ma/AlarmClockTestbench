@@ -2,8 +2,6 @@ class generator;
   rand int num_of_trans;
   rand trans_types tr_type;
 
-  type T;
-
   int   min_tr, //minimum number of transactions 
         max_tr, //maximum number of transactions
         n_cr,   //number of 'Clock Running' transactions
@@ -22,7 +20,6 @@ class generator;
     this.w_cr = w_cr;
     this.w_op = w_op;
     this.w_il = w_il;
-    T = config_transaction;
   endfunction
 
   constraint num_of_trans_range {
@@ -33,41 +30,45 @@ class generator;
     tr_type dist {CR:/w_cr, OP:/w_op, IL:/w_il};
   }
 
+  config_transaction trans;
+
   task run(mailbox gen2driv);
     // randomize the number of transactions
-    if(!num_of_trans.randomize()) $fatal("No. of transactions randomization failed!");
+    if(!randomize(num_of_trans)) $fatal("No. of transactions randomization failed!");
           
       repeat(num_of_trans)
         begin
+          cr_config_transaction cr_trans = new();
+          op_config_transaction op_trans = new();
+          il_config_transaction il_trans = new();
+
           //randomize transaction type
-          if(!tr_type.randomize()) $fatal("Transaction type randomization failed!")
-            
-          case(tr_type);
+          if(!randomize(tr_type)) $fatal("Transaction type randomization failed!");
+
+          case(tr_type)
             CR: begin
                 n_cr++;
-                T = cr_config_transaction;
+                if(!cr_trans.randomize()) $fatal("Clock Running transaction randomization failed!");
+                trans.do_copy(cr_trans);
             end
 
             OP: begin
                 n_op++;
-                T = op_config_transaction;
+                if(!op_trans.randomize()) $fatal("Clock Operations transaction randomization failed!");
+                trans.do_copy(op_trans);
             end
 
             IL: begin
                 n_il++;
-                T = il_config_transaction;
+                if(!il_trans.randomize()) $fatal("Illegal transaction randomization failed!");
+                trans.do_copy(il_trans);
             end
           endcase
 
-          // create and randomize the transaction
-          T trans = new();
-
-          if(!trans.randomize()) $fatal("Failed randomization!");
-          
           // add the transaction to the generator-to-driver queue
           gen2driv.put(trans);
         end 
-    $display("There are ", $sformatf("%0d", gen2driv.size()), " elements in the generator queue.\n
-              Clock running: %0d\n Clock operations: %0d\n Illegal transactions: %0d\n", n_cr, n_op, n_il);
+    $display("There are ", $sformatf("%0d", gen2driv.size()), " elements in the generator queue.\nClock running: %0d\n Clock operations: %0d\n Illegal transactions: %0d\n",
+            n_cr, n_op, n_il);
   endtask
 endclass

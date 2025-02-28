@@ -32,7 +32,7 @@ class alarm_generator;
           gen2driv.put(trans);
 
           //wait for the transaction to be processed before generating another
-          //@handshake;
+          @handshake;
         end 
     $display("Finished generating %0d alarm operations transactions\n", n_al);
   endtask

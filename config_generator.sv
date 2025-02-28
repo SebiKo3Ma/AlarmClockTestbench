@@ -1,12 +1,13 @@
 class config_generator;
-  rand int num_of_trans;
-  rand trans_types tr_type;
+  local int num_of_trans;
+  local trans_types tr_type;
+
+  local int n_cr,   //number of 'Clock Running' transactions
+            n_op,   //number of 'Clock operations' transactions
+            n_il;   //number of illegal transactions
 
   int   min_tr, //minimum number of transactions 
         max_tr, //maximum number of transactions
-        n_cr,   //number of 'Clock Running' transactions
-        n_op,   //number of 'Clock operations' transactions
-        n_il,   //number of illegal transactions
         w_cr,   //weight of 'Clock Running' transactions
         w_op,   //weight of 'Clock operations' transactions
         w_il;   //weight of illegal transactions
@@ -14,12 +15,12 @@ class config_generator;
   function new(int min_tr, int max_tr, int w_cr, int w_op, int w_il);
     this.min_tr = min_tr;
     this.max_tr = max_tr;
-    this.n_cr = 0;
-    this.n_op = 0;
-    this.n_il = 0;
     this.w_cr = w_cr;
     this.w_op = w_op;
     this.w_il = w_il;
+    this.n_cr = 0;
+    this.n_op = 0;
+    this.n_il = 0;
     this.tr_type = CR; //default value
   endfunction
 
@@ -70,7 +71,7 @@ class config_generator;
           gen2driv.put(trans);
 
           //wait for the transaction to be processed before generating another
-          //@handshake;
+          @handshake;
         end 
     $display("Finished generating %0d transactions.\nClock running: %0d\n Clock operations: %0d\n Illegal transactions: %0d\n",
             num_of_trans, n_cr, n_op, n_il);

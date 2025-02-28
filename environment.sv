@@ -16,7 +16,7 @@ class environment;
     this.alarm_inter = alarm_inter;
     cfg_gen   = new(10, 20, 4, 4, 2);
     al_gen = new(10, 20);
-    //cfg_drv   = new(config_inter);
+    cfg_drv   = new(config_inter);
     gen2drv   = new();
   endfunction
 
@@ -26,8 +26,10 @@ class environment;
   endtask
 
   task main();
+    fork
     	cfg_gen.run(gen2drv, handshake);
-    	//cfg_drv.run(gen2drv, handshake);
+    	cfg_drv.run(gen2drv, handshake);
+    join_any
   endtask
 
  task run;

@@ -1,4 +1,4 @@
-class generator;
+class config_generator;
   rand int num_of_trans;
   rand trans_types tr_type;
 
@@ -11,7 +11,7 @@ class generator;
         w_op,   //weight of 'Clock operations' transactions
         w_il;   //weight of illegal transactions
     
-  function new(int min_tr, max_tr, w_cr, w_op, w_il);
+  function new(int min_tr, int max_tr, int w_cr, int w_op, int w_il);
     this.min_tr = min_tr;
     this.max_tr = max_tr;
     this.n_cr = 0;
@@ -20,6 +20,7 @@ class generator;
     this.w_cr = w_cr;
     this.w_op = w_op;
     this.w_il = w_il;
+    this.tr_type = CR; //default value
   endfunction
 
   constraint num_of_trans_range {
@@ -27,17 +28,17 @@ class generator;
   }
 
   constraint type_distribution{
-    tr_type dist {CR:/w_cr, OP:/w_op, IL:/w_il};
+    tr_type dist {CR:=w_cr, OP:=w_op, IL:=w_il};
   }
 
-  config_transaction trans;
+  task run(mailbox gen2driv, event handshake);
 
-  task run(mailbox gen2driv);
     // randomize the number of transactions
     if(!randomize(num_of_trans)) $fatal("No. of transactions randomization failed!");
           
       repeat(num_of_trans)
         begin
+          config_transaction    trans    = new();
           cr_config_transaction cr_trans = new();
           op_config_transaction op_trans = new();
           il_config_transaction il_trans = new();
@@ -65,8 +66,11 @@ class generator;
             end
           endcase
 
-          // add the transaction to the generator-to-driver queue
+          // add the transaction to the generator-to-driver mailbox
           gen2driv.put(trans);
+
+          //wait for the transaction to be processed before generating another
+          //@handshake;
         end 
     $display("Finished generating %0d transactions.\nClock running: %0d\n Clock operations: %0d\n Illegal transactions: %0d\n",
             num_of_trans, n_cr, n_op, n_il);

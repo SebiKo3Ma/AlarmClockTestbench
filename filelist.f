@@ -5,5 +5,7 @@ config_interface.sv
 alarm_interface.sv
 config_generator.sv
 alarm_generator.sv
-clock.v
+config_driver.sv
+environment.sv
+clock.sv
 testbench.sv

@@ -23,6 +23,8 @@ module testbench;
     .S_out0    (cif.S_out0)
   );
 
+  environment env;
+
   // standard clock given as input
   initial begin
     clk = 1'b0;
@@ -30,8 +32,10 @@ module testbench;
   end
 
   initial begin
+    env = new(cif, aif);
     cif.do_reset();
     aif.do_reset();
+    env.run();
   end
 
   initial begin

@@ -1,4 +1,4 @@
-class generator;
+class alarm_generator;
   rand int num_of_trans;
 
   int   min_tr, //minimum number of transactions 
@@ -15,7 +15,7 @@ class generator;
     num_of_trans inside {[min_tr:max_tr]}; //random number of transactions in a configurable range
   }
 
-  task run(mailbox gen2driv);
+  task run(mailbox gen2driv, event handshake);
     // randomize the number of transactions
     if(!randomize(num_of_trans)) $fatal("No. of transactions randomization failed!");
           
@@ -28,8 +28,11 @@ class generator;
 
           n_al++;
 
-          // add the transaction to the generator-to-driver queue
+          // add the transaction to the generator-to-driver mailbox
           gen2driv.put(trans);
+
+          //wait for the transaction to be processed before generating another
+          //@handshake;
         end 
     $display("Finished generating %0d alarm operations transactions\n", n_al);
   endtask

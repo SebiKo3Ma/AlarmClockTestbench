@@ -4,5 +4,6 @@ alarm_transaction.sv
 config_interface.sv
 alarm_interface.sv
 config_generator.sv
+alarm_generator.sv
 clock.v
 testbench.sv

@@ -75,14 +75,14 @@ endtask
   
   // the transaction received will be sent to the interface
   task send_sig(config_transaction trans);
-    @(driver_clk); //driver_clk. la toate
+    @(driver_clk);
     driver_clk.reset    <= trans.reset;
-    H_in1    <= trans.H_in1;
-    H_in0    <= trans.H_in0;
-    M_in1    <= trans.M_in1;
-    M_in0    <= trans.M_in0;
-    LD_time  <= trans.LD_time;
-    LD_alarm <= trans.LD_alarm;
+    driver_clk.H_in1    <= trans.H_in1;
+    driver_clk.H_in0    <= trans.H_in0;
+    driver_clk.M_in1    <= trans.M_in1;
+    driver_clk.M_in0    <= trans.M_in0;
+    driver_clk.LD_time  <= trans.LD_time;
+    driver_clk.LD_alarm <= trans.LD_alarm;
   endtask
   
   // make it a task, use the clocking block

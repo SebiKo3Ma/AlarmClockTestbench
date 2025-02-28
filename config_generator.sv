@@ -68,7 +68,7 @@ class generator;
           // add the transaction to the generator-to-driver queue
           gen2driv.put(trans);
         end 
-    $display("There are ", $sformatf("%0d", gen2driv.size()), " elements in the generator queue.\nClock running: %0d\n Clock operations: %0d\n Illegal transactions: %0d\n",
-            n_cr, n_op, n_il);
+    $display("Finished generating %0d transactions.\nClock running: %0d\n Clock operations: %0d\n Illegal transactions: %0d\n",
+            num_of_trans, n_cr, n_op, n_il);
   endtask
 endclass

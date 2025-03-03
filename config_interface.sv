@@ -73,37 +73,25 @@ task init();
     #10 reset = 1'b0;
 endtask 
   
-  // the transaction received will be sent to the interface
-  task send_sig(config_transaction trans);
-    @(driver_clk);
-    driver_clk.reset    <= trans.reset;
-    driver_clk.H_in1    <= trans.H_in1;
-    driver_clk.H_in0    <= trans.H_in0;
-    driver_clk.M_in1    <= trans.M_in1;
-    driver_clk.M_in0    <= trans.M_in0;
-    driver_clk.LD_time  <= trans.LD_time;
-    driver_clk.LD_alarm <= trans.LD_alarm;
-  endtask
-  
   // make it a task, use the clocking block
-  function config_transaction get_sig();
-    automatic config_transaction trans = new();
-    trans.reset    = reset;
-    trans.H_in1    = H_in1;
-    trans.H_in0    = H_in0;
-    trans.M_in1    = M_in1;
-    trans.M_in0    = M_in0;
-    trans.LD_time  = LD_time;
-    trans.LD_alarm = LD_alarm;
+  // function config_transaction get_sig();
+  //   automatic config_transaction trans = new();
+  //   trans.reset    = reset;
+  //   trans.H_in1    = H_in1;
+  //   trans.H_in0    = H_in0;
+  //   trans.M_in1    = M_in1;
+  //   trans.M_in0    = M_in0;
+  //   trans.LD_time  = LD_time;
+  //   trans.LD_alarm = LD_alarm;
 
-    trans.H_out1   = H_out1;
-    trans.H_out0   = H_out0;
-    trans.M_out1   = M_out1;
-    trans.M_out0   = M_out0;
-    trans.S_out1   = S_out1;
-    trans.S_out0   = S_out0;
+  //   trans.H_out1   = H_out1;
+  //   trans.H_out0   = H_out0;
+  //   trans.M_out1   = M_out1;
+  //   trans.M_out0   = M_out0;
+  //   trans.S_out1   = S_out1;
+  //   trans.S_out0   = S_out0;
     
-    return trans;
-  endfunction
+  //   return trans;
+  // endfunction
   
 endinterface

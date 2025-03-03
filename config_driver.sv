@@ -12,6 +12,17 @@ class config_driver;
     delay inside {[10:100]};
   }
 
+  task send_sig(config_transaction trans);
+    @(m_vif.driver_clk);
+    m_vif.driver_clk.reset    <= trans.reset;
+    m_vif.driver_clk.H_in1    <= trans.H_in1;
+    m_vif.driver_clk.H_in0    <= trans.H_in0;
+    m_vif.driver_clk.M_in1    <= trans.M_in1;
+    m_vif.driver_clk.M_in0    <= trans.M_in0;
+    m_vif.driver_clk.LD_time  <= trans.LD_time;
+    m_vif.driver_clk.LD_alarm <= trans.LD_alarm;
+  endtask
+
   task run(mailbox gen2driv, event handshake);
     // reset the DUT
     m_vif.do_reset();
@@ -25,7 +36,7 @@ class config_driver;
         trans.display("DRV");
         
         // send the transaction to the interface
-        #delay m_vif.send_sig(trans);
+        #delay send_sig(trans);
         //make a delay function  in the interface, no @ in driver (use repeat(n) wait function;)
 
         //confirm transaction was processed

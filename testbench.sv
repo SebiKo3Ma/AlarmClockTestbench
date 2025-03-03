@@ -25,6 +25,7 @@ module testbench;
 
   environment env;
   int cfg_gen_params[5] = '{10, 20, 6, 2, 2};
+  int al_gen_params[2] = '{3, 6};
 
   // standard clock given as input
   initial begin
@@ -33,9 +34,7 @@ module testbench;
   end
 
   initial begin
-    env = new(cif, aif, cfg_gen_params);
-    cif.do_reset();
-    aif.do_reset();
+    env = new(cif, aif, cfg_gen_params, al_gen_params);
     env.run();
   end
 

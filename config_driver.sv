@@ -33,7 +33,7 @@ class config_driver;
         if(!this.randomize()) $fatal("Delay randomization failed!");
 
         // display the transaction
-        trans.display("DRV");
+        trans.display("CFG_DRV");
         
         // send the transaction to the interface
         #delay send_sig(trans);

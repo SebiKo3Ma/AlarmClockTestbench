@@ -2,6 +2,7 @@ class environment;
   //declare all the components
   config_agent cfg_agt;
   alarm_agent al_agt;
+  coverage cov;
 
   virtual aclk_tconfig_if config_inter;
   virtual aclk_alop_if alarm_inter;
@@ -15,6 +16,7 @@ class environment;
     this.al_gen_params = al_gen_params;
     cfg_agt  = new(config_inter, cfg_gen_params);
     al_agt = new(alarm_inter, al_gen_params);
+    cov = new(config_inter, alarm_inter);
   endfunction
 
   task pre_main(); 
@@ -32,6 +34,7 @@ class environment;
  task run;
     pre_main();
     main();
+    cov.report();
     $finish;
   endtask
 endclass

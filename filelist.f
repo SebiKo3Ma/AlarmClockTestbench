@@ -14,6 +14,7 @@ alarm_driver.sv
 alarm_monitor.sv
 alarm_agent.sv
 
+coverage.sv
 environment.sv
 clock.sv
 testbench.sv

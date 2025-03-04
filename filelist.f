@@ -11,6 +11,7 @@ alarm_transaction.sv
 alarm_interface.sv
 alarm_generator.sv
 alarm_driver.sv
+alarm_monitor.sv
 alarm_agent.sv
 
 environment.sv

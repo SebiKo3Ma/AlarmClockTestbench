@@ -4,6 +4,7 @@ config_transaction.sv
 config_interface.sv
 config_generator.sv
 config_driver.sv
+config_monitor.sv
 config_agent.sv
 
 alarm_transaction.sv

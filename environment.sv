@@ -26,8 +26,7 @@ class environment;
     fork
       cfg_agt.run();
       al_agt.run();
-    join_none
-    #10000;
+    join
   endtask
 
  task run;

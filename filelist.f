@@ -16,10 +16,9 @@ config_driver.sv
 alarm_driver.sv
 
 config_monitor.sv
-config_agent.sv
-
 alarm_monitor.sv
-alarm_agent.sv
+
+agent.sv
 
 coverage.sv
 environment.sv

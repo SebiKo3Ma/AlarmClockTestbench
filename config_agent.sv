@@ -14,7 +14,7 @@ class config_agent;
         this.inter = config_inter;
         this.gen_params = gen_params;
         gen = new(gen_params);
-        drv = new(inter);
+        drv = new(inter, "CFG_DRV");
         gen2drv = new();
         mon = new(inter);
     endfunction

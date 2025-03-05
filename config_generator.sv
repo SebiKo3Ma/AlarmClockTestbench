@@ -73,7 +73,7 @@ class config_generator;
           //wait for the transaction to be processed before generating another
           @handshake;
         end 
-    $display("Finished generating %0d transactions.\nClock running: %0d\n Clock operations: %0d\n Illegal transactions: %0d\n",
+    $display("Finished generating %0d transactions.\nClock running: %0d\nClock operations: %0d\nIllegal transactions: %0d\n",
             num_of_trans, n_cr, n_op, n_il);
   endtask
 endclass

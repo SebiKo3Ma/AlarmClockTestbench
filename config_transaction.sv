@@ -1,4 +1,4 @@
-class config_transaction;
+class config_transaction extends transaction #(config_transaction);
   rand logic       reset;
   rand logic [1:0] H_in1;
   rand logic [3:0] H_in0;
@@ -14,8 +14,6 @@ class config_transaction;
        logic [3:0] M_out0;
        logic [3:0] S_out1;
        logic [3:0] S_out0;
-
-  trans_types tr_type;
   
   //Constructor
   function new();

@@ -1,5 +1,7 @@
 trans_types.sv
 
+transaction.sv
+
 config_transaction.sv
 config_interface.sv
 config_generator.sv

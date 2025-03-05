@@ -1,4 +1,4 @@
-class alarm_transaction;
+class alarm_transaction extends transaction #(alarm_transaction);
   rand logic STOP_al;
   rand logic AL_ON;
 
@@ -6,6 +6,7 @@ class alarm_transaction;
   
   //Constructor
   function new();
+    this.tr_type = AL;
   endfunction
   
   constraint alarm_mostly_on{

@@ -1,4 +1,4 @@
-class agent #(type GT, type DT, type MT, type IT, type TT);
+virtual class agent #(type GT, type DT, type MT, type IT, type TT);
     GT gen;
     DT drv;
     MT mon;
@@ -16,7 +16,7 @@ class agent #(type GT, type DT, type MT, type IT, type TT);
         gen = new(gen_params);
         drv = new(inter, {name, "_DRV"});
         gen2drv = new();
-        mon = new(inter);
+        mon = new(inter, {name, "_MON"});
     endfunction
 
     task run();

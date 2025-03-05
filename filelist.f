@@ -7,15 +7,11 @@ transaction.sv
 config_transaction.sv
 alarm_transaction.sv
 
-
 config_generator.sv
 alarm_generator.sv
 
 driver.sv
-
-config_monitor.sv
-alarm_monitor.sv
-
+monitor.sv
 agent.sv
 
 coverage.sv

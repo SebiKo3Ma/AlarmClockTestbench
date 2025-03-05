@@ -12,8 +12,6 @@ config_generator.sv
 alarm_generator.sv
 
 driver.sv
-config_driver.sv
-alarm_driver.sv
 
 config_monitor.sv
 alarm_monitor.sv

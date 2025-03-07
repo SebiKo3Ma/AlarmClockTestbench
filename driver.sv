@@ -11,6 +11,12 @@ virtual class driver #(type TT, type IT);
 
   pure virtual task send_sig(TT trans);
 
+  rand int delay;
+
+  constraint delay_bounds{
+    delay inside {[1:10]};
+  }
+
   task run(mailbox gen2driv, event handshake);
     // reset the DUT
     m_vif.do_reset();
@@ -24,15 +30,13 @@ virtual class driver #(type TT, type IT);
         trans.display(name);
         
         // send the transaction to the interface
+        repeat(delay) @(posedge m_vif.tb_clk);
         send_sig(trans);
-        //make a delay function  in the interface, no @ in driver (use repeat(n) wait function;)
 
         //confirm transaction was processed
         ->handshake;
-    end
+    end    
     
-    // wait some time for the transaction to finish
-    repeat(2) @(posedge m_vif.tb_clk);
   endtask
 endclass
 

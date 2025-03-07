@@ -38,14 +38,4 @@ task init();
     AL_ON    = 1'b0;
 endtask 
   
-  // the transaction received will be sent to the interface
-  // function alarm_transaction get_sig();
-  //   automatic alarm_transaction trans = new();
-  //   trans.STOP_al = STOP_al;
-  //   trans.AL_ON   = AL_ON;
-  //   trans.Alarm   = Alarm;
-    
-  //   return trans;
-  // endfunction
-  
 endinterface

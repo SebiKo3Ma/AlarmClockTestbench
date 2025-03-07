@@ -73,7 +73,4 @@ task init();
     #10 reset = 1'b0;
 endtask 
   
-  // make it a task, use the clocking block
-  
-  
 endinterface

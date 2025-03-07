@@ -1,4 +1,4 @@
-virtual class agent #(type GT, type DT, type MT, type IT, type TT);
+virtual class agent #(type GT, type DT, type MT, type IT, type TT, type CT);
     GT gen;
     DT drv;
     MT mon;
@@ -7,10 +7,10 @@ virtual class agent #(type GT, type DT, type MT, type IT, type TT);
 
     mailbox gen2drv;
     event handshake;
-    int gen_params[5];
+    CT gen_params;
     TT mon2cmp[$];
 
-    function new(IT inter, int gen_params[5], string name);
+    function new(IT inter, CT gen_params, string name);
         this.inter = inter;
         this.gen_params = gen_params;
         gen = new(gen_params);
@@ -28,14 +28,14 @@ virtual class agent #(type GT, type DT, type MT, type IT, type TT);
     endtask
 endclass
 
-class config_agent extends agent #(config_generator, config_driver, config_monitor, virtual aclk_tconfig_if, config_transaction);
-    function new(IT inter, int gen_params[5], string name);
+class config_agent extends agent #(config_generator, config_driver, config_monitor, virtual aclk_tconfig_if, config_transaction, cfg_gen_configs);
+    function new(IT inter,  cfg_gen_configs gen_params, string name);
         super.new(inter, gen_params, name);
     endfunction
 endclass
 
-class alarm_agent extends agent #(alarm_generator, alarm_driver, alarm_monitor, virtual aclk_alop_if, alarm_transaction);
-    function new(IT inter, int gen_params[5], string name);
+class alarm_agent extends agent #(alarm_generator, alarm_driver, alarm_monitor, virtual aclk_alop_if, alarm_transaction, al_gen_configs);
+    function new(IT inter, al_gen_configs gen_params, string name);
         super.new(inter, gen_params, name);
     endfunction
 endclass

@@ -7,9 +7,10 @@ class environment;
   virtual aclk_tconfig_if config_inter;
   virtual aclk_alop_if alarm_inter;
 
-  int cfg_gen_params[5], al_gen_params[5];
+  cfg_gen_configs cfg_gen_params;
+  al_gen_configs  al_gen_params;
 
-  function new(virtual aclk_tconfig_if config_inter, virtual aclk_alop_if alarm_inter, int cfg_gen_params[5], int al_gen_params[5]);
+  function new(virtual aclk_tconfig_if config_inter, virtual aclk_alop_if alarm_inter, cfg_gen_configs cfg_gen_params, al_gen_configs al_gen_params);
     this.config_inter = config_inter;
     this.alarm_inter = alarm_inter;
     this.cfg_gen_params = cfg_gen_params;

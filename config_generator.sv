@@ -12,12 +12,12 @@ class config_generator;
         w_op,   //weight of 'Clock operations' transactions
         w_il;   //weight of illegal transactions
     
-  function new(int gen_params[5]);
-    this.min_tr = gen_params[0];
-    this.max_tr = gen_params[1];
-    this.w_cr = gen_params[2];
-    this.w_op = gen_params[3];
-    this.w_il = gen_params[4];
+  function new(cfg_gen_configs gen_params);
+    this.min_tr = gen_params.min_tr;
+    this.max_tr = gen_params.max_tr;
+    this.w_cr = gen_params.w_cr;
+    this.w_op = gen_params.w_op;
+    this.w_il = gen_params.w_il;
     this.n_cr = 0;
     this.n_op = 0;
     this.n_il = 0;

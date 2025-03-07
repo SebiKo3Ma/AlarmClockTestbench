@@ -5,9 +5,9 @@ class alarm_generator;
         max_tr, //maximum number of transactions
         n_al;  //No. of alarm operations transactions generated
     
-  function new(int gen_params[5]);
-    this.min_tr = gen_params[0];
-    this.max_tr = gen_params[1];
+  function new(al_gen_configs gen_params);
+    this.min_tr = gen_params.min_tr;
+    this.max_tr = gen_params.max_tr;
     this.n_al  = 0;
   endfunction
 

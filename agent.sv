@@ -8,7 +8,6 @@ virtual class agent #(type GT, type DT, type MT, type IT, type TT, type CT);
     mailbox gen2drv;
     event handshake;
     CT gen_params;
-    TT mon2cmp[$];
 
     function new(IT inter, CT gen_params, string name);
         this.inter = inter;
@@ -19,7 +18,7 @@ virtual class agent #(type GT, type DT, type MT, type IT, type TT, type CT);
         mon = new(inter, {name, "_MON"});
     endfunction
 
-    task run();
+    task run(mailbox mon2cmp);
         fork
     	    gen.run(gen2drv, handshake);
     	    drv.run(gen2drv, handshake);

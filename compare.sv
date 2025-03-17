@@ -34,7 +34,13 @@ class compare #(type TT);
 endclass
 
 class config_compare extends compare #(config_transaction);
+  function new();
+    super.new("CFG");
+  endfunction
 endclass
 
 class alarm_compare extends compare #(alarm_transaction);
+  function new();
+    super.new("CFG");
+  endfunction
 endclass

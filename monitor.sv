@@ -10,7 +10,7 @@ virtual class monitor #(type TT, type IT);
   pure virtual task get_sig(ref TT trans, IT m_vif);
 
 
-  task run(ref TT mon2cmp[$]);
+  task run(mailbox mon2cmp);
     forever begin
       // get the signals from the interface
       TT trans;
@@ -20,7 +20,7 @@ virtual class monitor #(type TT, type IT);
       trans.display(name);
       
       // push the transaction to the monitor->comparator queue
-      mon2cmp.push_back(trans);
+      mon2cmp.put(trans);
     end
   endtask
 endclass

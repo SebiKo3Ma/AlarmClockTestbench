@@ -16,7 +16,6 @@ class reference;
         second = 0;
         al_hour = 0;
         al_minute = 0;
-        al_second = 0;
         al_sound = 0;
     endfunction
 
@@ -44,11 +43,10 @@ class reference;
     endfunction
 
     function void getAlarm();
-        if(cfg_trans.LD_Alarm) begin
+        if(cfg_trans.LD_alarm) begin
             //get new alarm time
             al_hour   = cfg_trans.H_in1 + 10 * cfg_trans.H_in0;
             al_minute = cfg_trans.M_in1 + 10 * cfg_trans.M_in0;
-            al_second = 0;
         end
     endfunction
 
@@ -59,7 +57,6 @@ class reference;
             second = 0;
             al_hour = 0;
             al_minute = 0;
-            al_second = 0;
             al_sound = 0;
         end
     endfunction
@@ -81,7 +78,7 @@ class reference;
 
     endfunction
 
-    function void process_config(mailbox mon2cmp, mailbox ref2cmp);
+    task process_config(mailbox mon2cmp, config_transaction mon2cmp_q[$], config_transaction ref2cmp[$]);
         mon2cmp.get(cfg_trans);
         getTime();
         getAlarm();
@@ -102,23 +99,25 @@ class reference;
         cfg_trans_out.S_out1 = (second / 10) % 10;
         cfg_trans_out.S_out0 = second % 10;
 
-        mon2cmp.put(cfg_trans_out);
-    endfunction
+        ref2cmp.push_back(cfg_trans_out);
+        mon2cmp_q.push_back(cfg_trans);
+    endtask
 
-    function void process_alarm(mailbox mon2cmp, mailbox ref2cmp);
+    task process_alarm(mailbox mon2cmp, alarm_transaction mon2cmp_q[$], alarm_transaction ref2cmp[$]);
         mon2cmp.get(al_trans);        
         al_trans_out.Alarm   = isAlarm();
         al_trans_out.STOP_al = al_trans.STOP_al;
         al_trans_out.AL_ON   = al_trans.AL_ON;           
-        ref2cmp.put(al_trans_out);
-    endfunction
+        ref2cmp.push_back(al_trans_out);
+        mon2cmp_q.push_back(al_trans);
+    endtask
 
-    function void run(mailbox mon2cmp_cfg, mailbox mon2cmp_al, mailbox ref2cmp_cfg, mailbox ref2cmp_al);
+    task run(mailbox mon2cmp_cfg, mailbox mon2cmp_al, config_transaction mon2cmp_cfg_q[$], alarm_transaction mon2cmp_al_q[$], config_transaction ref2cmp_cfg[$], alarm_transaction ref2cmp_al[$]);
         forever begin
             fork
-                process_config(mon2cmp_cfg, ref2cmp_cfg);
-                process_alarm(mon2cmp_al, ref2cmp_al);
+                process_config(mon2cmp_cfg, mon2cmp_cfg_q, ref2cmp_cfg);
+                process_alarm(mon2cmp_al, mon2cmp_al_q, ref2cmp_al);
             join_any
         end
-    endfunction
+    endtask
 endclass

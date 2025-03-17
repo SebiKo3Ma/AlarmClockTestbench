@@ -15,6 +15,9 @@ driver.sv
 monitor.sv
 agent.sv
 
+reference.sv
+compare.sv
+
 coverage.sv
 environment.sv
 clock.sv

@@ -17,6 +17,8 @@ class reference;
         al_hour = 0;
         al_minute = 0;
         al_sound = 0;
+        cfg_trans_out = new();
+        al_trans_out = new();
     endfunction
 
     function void getTime();
@@ -84,30 +86,36 @@ class reference;
         getAlarm();
         getReset();
 
-        cfg_trans_out.H_in0  = cfg_trans.H_in0;
-        cfg_trans_out.H_in1  = cfg_trans.H_in1;
-        cfg_trans_out.M_out0 = cfg_trans.M_in0;
-        cfg_trans_out.M_out1 = cfg_trans.M_in1;
+        cfg_trans_out.reset  = cfg_trans.reset;
+
+        cfg_trans_out.H_in0 = cfg_trans.H_in0;
+        cfg_trans_out.H_in1 = cfg_trans.H_in1;
+        cfg_trans_out.M_in0 = cfg_trans.M_in0;
+        cfg_trans_out.M_in1 = cfg_trans.M_in1;
 
         cfg_trans_out.LD_time  = cfg_trans.LD_time;
         cfg_trans_out.LD_alarm = cfg_trans.LD_alarm;
 
-        cfg_trans_out.H_out1 = (hour / 10) % 10;
-        cfg_trans_out.H_out0 = hour % 10;
-        cfg_trans_out.M_out1 = (minute / 10) % 10;
-        cfg_trans_out.M_out0 = minute % 10;   
-        cfg_trans_out.S_out1 = (second / 10) % 10;
-        cfg_trans_out.S_out0 = second % 10;
+        cfg_trans_out.H_out0 = (hour / 10) % 10;
+        cfg_trans_out.H_out1 = hour % 10;
+        cfg_trans_out.M_out0 = (minute / 10) % 10;
+        cfg_trans_out.M_out1 = minute % 10;   
+        cfg_trans_out.S_out0 = (second / 10) % 10;
+        cfg_trans_out.S_out1 = second % 10;
 
+        cfg_trans.display("MON_CFG:");
+        cfg_trans_out.display("REF_CFG:");
         ref2cmp.push_back(cfg_trans_out);
         mon2cmp_q.push_back(cfg_trans);
     endtask
 
     task process_alarm(mailbox mon2cmp, alarm_transaction mon2cmp_q[$], alarm_transaction ref2cmp[$]);
-        mon2cmp.get(al_trans);        
+        mon2cmp.get(al_trans);
         al_trans_out.Alarm   = isAlarm();
         al_trans_out.STOP_al = al_trans.STOP_al;
-        al_trans_out.AL_ON   = al_trans.AL_ON;           
+        al_trans_out.AL_ON   = al_trans.AL_ON;
+        al_trans.display("MON_AL:");
+        al_trans_out.display("REF_AL:");    
         ref2cmp.push_back(al_trans_out);
         mon2cmp_q.push_back(al_trans);
     endtask

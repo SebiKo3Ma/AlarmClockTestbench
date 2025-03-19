@@ -80,11 +80,13 @@ class reference;
 
     endfunction
 
-    task process_config(mailbox mon2cmp, ref config_transaction mon2cmp_q[$], ref config_transaction ref2cmp[$]);
-        mon2cmp.get(cfg_trans);
+    task process_config(mailbox mon2ref, ref config_transaction mon2cmp[$], ref config_transaction ref2cmp[$]);
+        mon2ref.get(cfg_trans);
         getTime();
         getAlarm();
         getReset();
+
+        cfg_trans_out = new();
 
         cfg_trans_out.reset  = cfg_trans.reset;
 
@@ -106,18 +108,21 @@ class reference;
         cfg_trans.display("\nMON_CFG:");
         cfg_trans_out.display("REF_CFG:");
         ref2cmp.push_back(cfg_trans_out);
-        mon2cmp_q.push_back(cfg_trans);
+        mon2cmp.push_back(cfg_trans);
     endtask
 
-    task process_alarm(mailbox mon2cmp, ref alarm_transaction mon2cmp_q[$], ref alarm_transaction ref2cmp[$]);
-        mon2cmp.get(al_trans);
+    task process_alarm(mailbox mon2ref, ref alarm_transaction mon2cmp[$], ref alarm_transaction ref2cmp[$]);
+        mon2ref.get(al_trans);
+
+        al_trans_out = new();
+
         al_trans_out.Alarm   = isAlarm();
         al_trans_out.STOP_al = al_trans.STOP_al;
         al_trans_out.AL_ON   = al_trans.AL_ON;
-        al_trans.display("\nMON_AL:");
-        al_trans_out.display("REF_AL:");    
+        // al_trans.display("\nMON_AL:");
+        // al_trans_out.display("REF_AL:");    
         ref2cmp.push_back(al_trans_out);
-        mon2cmp_q.push_back(al_trans);
+        mon2cmp.push_back(al_trans);
     endtask
 
     task run(mailbox mon2ref_cfg, mailbox mon2ref_al, scoreboard_queues mon2cmp, scoreboard_queues ref2cmp);

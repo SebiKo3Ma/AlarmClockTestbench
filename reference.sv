@@ -1,9 +1,9 @@
 class reference;
-    local int hour,
-              minute,
-              second,
-              al_hour,
-              al_minute;
+    local logic [6:0]   hour,
+                        minute,
+                        second,
+                        al_hour,
+                        al_minute;
 
     local int al_sound;
 
@@ -19,6 +19,13 @@ class reference;
         al_sound = 0;
         cfg_trans_out = new();
         al_trans_out = new();
+    endfunction
+
+    function void loadTime();
+        //get the new time
+        hour   = cfg_trans.H_in0 + 10 * cfg_trans.H_in1;
+        minute = cfg_trans.M_in0 + 10 * cfg_trans.M_in1;
+        second = 0;
     endfunction
 
     function void getTime();
@@ -37,10 +44,7 @@ class reference;
                 end
             end
         end else begin
-            //get the new time
-            hour   = cfg_trans.H_in0 + 10 * cfg_trans.H_in1;
-            minute = cfg_trans.M_in0 + 10 * cfg_trans.M_in1;
-            second = 0;
+            loadTime();
         end
     endfunction
 
@@ -54,9 +58,7 @@ class reference;
 
     function void getReset();
         if(cfg_trans.reset) begin
-            hour = 0;
-            minute = 0;
-            second = 0;
+            loadTime();
             al_hour = 0;
             al_minute = 0;
             al_sound = 0;

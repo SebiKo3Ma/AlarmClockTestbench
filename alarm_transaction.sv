@@ -15,7 +15,7 @@ class alarm_transaction extends transaction #(alarm_transaction);
 
   constraint few_irrelevant_stops{
     (!AL_ON) -> STOP_al dist {1:/1, 0:/9};
-    STOP_al dist {1:/1, 0:/10};
+    STOP_al dist {1:/4, 0:/6};
   }
 
   function void display(string name = "");

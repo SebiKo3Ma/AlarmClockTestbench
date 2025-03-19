@@ -64,6 +64,9 @@ class reference;
     endfunction
 
     function int isAlarm();
+        if(al_sound)
+            return 1;
+
         if(al_trans.AL_ON && !al_trans.STOP_al) begin
             if(hour == al_hour && minute == al_minute && second == 0) begin
                 al_sound = 1;
@@ -73,9 +76,6 @@ class reference;
         if(al_trans.STOP_al) begin
             al_sound = 0;
         end
-
-        if(al_sound)
-            return 1;
         else return 0;
 
     endfunction

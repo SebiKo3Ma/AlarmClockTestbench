@@ -14,7 +14,7 @@ task do_reset();
 endtask
 
 always @(posedge clk) begin
-    if(counter == 4'b0101) begin
+    if(counter == 4'b0100) begin
         counter <= 4'b0000;
         tb_clk <= ~tb_clk;
     end else

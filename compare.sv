@@ -13,17 +13,6 @@ class compare #(type TT);
   endfunction
   
   task run(ref TT mon2cmp[$],ref TT ref2cmp[$]);
-    $display("-------------------------------- Reference Queue sanity check --------------------------------");
-    foreach(ref2cmp[i]) begin
-      ref2cmp[i].display("REFQ");
-    end
-
-    $display("-------------------------------- Monitor Queue sanity check --------------------------------");
-    foreach(mon2cmp[i]) begin
-      mon2cmp[i].display("MONQ");
-    end
-
-
     if(mon2cmp.size()) begin
       foreach(mon2cmp[i]) begin 
         nr_total++;

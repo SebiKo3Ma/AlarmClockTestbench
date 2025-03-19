@@ -34,7 +34,7 @@ module testbench;
   end
 
   initial begin
-    cfg_gen_params = new(10, 20, 6, 2, 2);
+    cfg_gen_params = new(10, 20, 6, 2, 0);
     al_gen_params  = new(10, 10);
     env = new(cif, aif, cfg_gen_params, al_gen_params);
     env.run();

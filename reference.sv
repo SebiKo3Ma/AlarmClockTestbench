@@ -38,8 +38,8 @@ class reference;
             end
         end else begin
             //get the new time
-            hour   = cfg_trans.H_in1 + 10 * cfg_trans.H_in0;
-            minute = cfg_trans.M_in1 + 10 * cfg_trans.M_in0;
+            hour   = cfg_trans.H_in0 + 10 * cfg_trans.H_in1;
+            minute = cfg_trans.M_in0 + 10 * cfg_trans.M_in1;
             second = 0;
         end
     endfunction
@@ -47,8 +47,8 @@ class reference;
     function void getAlarm();
         if(cfg_trans.LD_alarm) begin
             //get new alarm time
-            al_hour   = cfg_trans.H_in1 + 10 * cfg_trans.H_in0;
-            al_minute = cfg_trans.M_in1 + 10 * cfg_trans.M_in0;
+            al_hour   = cfg_trans.H_in0 + 10 * cfg_trans.H_in1;
+            al_minute = cfg_trans.M_in0 + 10 * cfg_trans.M_in1;
         end
     endfunction
 
@@ -96,14 +96,14 @@ class reference;
         cfg_trans_out.LD_time  = cfg_trans.LD_time;
         cfg_trans_out.LD_alarm = cfg_trans.LD_alarm;
 
-        cfg_trans_out.H_out0 = (hour / 10) % 10;
-        cfg_trans_out.H_out1 = hour % 10;
-        cfg_trans_out.M_out0 = (minute / 10) % 10;
-        cfg_trans_out.M_out1 = minute % 10;   
-        cfg_trans_out.S_out0 = (second / 10) % 10;
-        cfg_trans_out.S_out1 = second % 10;
+        cfg_trans_out.H_out1 = (hour / 10) % 10;
+        cfg_trans_out.H_out0 = hour % 10;
+        cfg_trans_out.M_out1 = (minute / 10) % 10;
+        cfg_trans_out.M_out0 = minute % 10;   
+        cfg_trans_out.S_out1 = (second / 10) % 10;
+        cfg_trans_out.S_out0 = second % 10;
 
-        cfg_trans.display("MON_CFG:");
+        cfg_trans.display("\nMON_CFG:");
         cfg_trans_out.display("REF_CFG:");
         ref2cmp.push_back(cfg_trans_out);
         mon2cmp_q.push_back(cfg_trans);
@@ -114,7 +114,7 @@ class reference;
         al_trans_out.Alarm   = isAlarm();
         al_trans_out.STOP_al = al_trans.STOP_al;
         al_trans_out.AL_ON   = al_trans.AL_ON;
-        al_trans.display("MON_AL:");
+        al_trans.display("\nMON_AL:");
         al_trans_out.display("REF_AL:");    
         ref2cmp.push_back(al_trans_out);
         mon2cmp_q.push_back(al_trans);

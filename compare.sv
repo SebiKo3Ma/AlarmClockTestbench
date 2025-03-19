@@ -12,8 +12,8 @@ class compare #(type TT);
     this.nr_passed = 0;
   endfunction
   
-  task run(ref TT mon2cmp[$], TT ref2cmp[$]);
-    if(mon2cmp.size() && (mon2cmp.size() == ref2cmp.size())) begin
+  task run(ref TT mon2cmp[$],ref TT ref2cmp[$]);
+    if(mon2cmp.size()) begin
       foreach(mon2cmp[i]) begin 
         nr_total++;
         
@@ -28,7 +28,7 @@ class compare #(type TT);
           $display("Transaction %0d: Incorrect %0d", nr_total, nr_failed);
         end
       end
-    end
+    end else begin $write("Empty queue"); end
     $display("Total: %0d\nPassed: %0d\nFailed: %0d", nr_total, nr_passed, nr_failed);
   endtask
 endclass
@@ -41,6 +41,6 @@ endclass
 
 class alarm_compare extends compare #(alarm_transaction);
   function new();
-    super.new("CFG");
+    super.new("AL");
   endfunction
 endclass

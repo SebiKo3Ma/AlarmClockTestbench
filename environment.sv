@@ -13,9 +13,8 @@ class environment;
   cfg_gen_configs cfg_gen_params;
   al_gen_configs  al_gen_params;
 
-  mailbox cfg_mon2cmp, al_mon2cmp;
-  config_transaction cfg_mon2cmp_q[$], cfg_ref2cmp[$];
-  alarm_transaction al_mon2cmp_q[$], al_ref2cmp[$];
+  mailbox cfg_mon2ref, al_mon2ref;
+  scoreboard_queues mon2cmp, ref2cmp;
 
   function new(virtual aclk_tconfig_if config_inter, virtual aclk_alop_if alarm_inter, cfg_gen_configs cfg_gen_params, al_gen_configs al_gen_params);
     this.config_inter = config_inter;
@@ -24,8 +23,10 @@ class environment;
     this.al_gen_params = al_gen_params;
     cfg_agt  = new(config_inter, cfg_gen_params, "CFG");
     al_agt   = new(alarm_inter, al_gen_params, "AL");
-    cfg_mon2cmp = new();
-    al_mon2cmp  = new();
+    cfg_mon2ref = new();
+    al_mon2ref  = new();
+    mon2cmp = new();
+    ref2cmp = new();
     cfg_compare = new();
     al_compare  = new();
     refer = new();
@@ -40,14 +41,14 @@ class environment;
   task main();
     fork
       fork
-        cfg_agt.run(cfg_mon2cmp);
-        al_agt.run(al_mon2cmp);
+        cfg_agt.run(cfg_mon2ref);
+        al_agt.run(al_mon2ref);
       join
-      refer.run(cfg_mon2cmp, al_mon2cmp, cfg_mon2cmp_q, al_mon2cmp_q, cfg_ref2cmp, al_ref2cmp);
+      refer.run(cfg_mon2ref, al_mon2ref, mon2cmp, ref2cmp);
     join_any
     disable fork;
-    cfg_compare.run(cfg_mon2cmp_q, cfg_ref2cmp);
-    al_compare.run(al_mon2cmp_q, al_ref2cmp);
+    cfg_compare.run(mon2cmp.cfg, ref2cmp.cfg);
+    al_compare.run(mon2cmp.al, ref2cmp.al);
   endtask
 
  task run;

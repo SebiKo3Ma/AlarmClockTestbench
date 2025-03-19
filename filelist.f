@@ -15,6 +15,7 @@ driver.sv
 monitor.sv
 agent.sv
 
+scoreboard_queues.sv
 reference.sv
 compare.sv
 

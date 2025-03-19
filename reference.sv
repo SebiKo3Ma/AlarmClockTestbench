@@ -80,7 +80,7 @@ class reference;
 
     endfunction
 
-    task process_config(mailbox mon2cmp, config_transaction mon2cmp_q[$], config_transaction ref2cmp[$]);
+    task process_config(mailbox mon2cmp, ref config_transaction mon2cmp_q[$], ref config_transaction ref2cmp[$]);
         mon2cmp.get(cfg_trans);
         getTime();
         getAlarm();
@@ -109,7 +109,7 @@ class reference;
         mon2cmp_q.push_back(cfg_trans);
     endtask
 
-    task process_alarm(mailbox mon2cmp, alarm_transaction mon2cmp_q[$], alarm_transaction ref2cmp[$]);
+    task process_alarm(mailbox mon2cmp, ref alarm_transaction mon2cmp_q[$], ref alarm_transaction ref2cmp[$]);
         mon2cmp.get(al_trans);
         al_trans_out.Alarm   = isAlarm();
         al_trans_out.STOP_al = al_trans.STOP_al;
@@ -120,11 +120,11 @@ class reference;
         mon2cmp_q.push_back(al_trans);
     endtask
 
-    task run(mailbox mon2cmp_cfg, mailbox mon2cmp_al, config_transaction mon2cmp_cfg_q[$], alarm_transaction mon2cmp_al_q[$], config_transaction ref2cmp_cfg[$], alarm_transaction ref2cmp_al[$]);
+    task run(mailbox mon2ref_cfg, mailbox mon2ref_al, scoreboard_queues mon2cmp, scoreboard_queues ref2cmp);
         forever begin
             fork
-                process_config(mon2cmp_cfg, mon2cmp_cfg_q, ref2cmp_cfg);
-                process_alarm(mon2cmp_al, mon2cmp_al_q, ref2cmp_al);
+                process_config(mon2ref_cfg, mon2cmp.cfg, ref2cmp.cfg);
+                process_alarm(mon2ref_al, mon2cmp.al, ref2cmp.al);
             join_any
         end
     endtask

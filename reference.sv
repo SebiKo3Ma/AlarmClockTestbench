@@ -1,4 +1,7 @@
+import config_pkg::*;
+
 class reference;
+
     local logic [6:0]   hour,
                         minute,
                         second,
@@ -107,8 +110,14 @@ class reference;
         cfg_trans_out.S_out1 = (second / 10) % 10;
         cfg_trans_out.S_out0 = second % 10;
 
-        cfg_trans.display("\nMON_CFG:");
-        cfg_trans_out.display("REF_CFG:");
+        if(verbosity > 3) $display("");
+        if(verbosity > 2) begin
+            $display("CONFIG REFERENCE:");
+            cfg_trans.display("     IN");
+            cfg_trans_out.display("    OUT");
+            $display("");
+        end
+
         ref2cmp.push_back(cfg_trans_out);
         mon2cmp.push_back(cfg_trans);
     endtask
@@ -121,8 +130,14 @@ class reference;
         al_trans_out.Alarm   = isAlarm();
         al_trans_out.STOP_al = al_trans.STOP_al;
         al_trans_out.AL_ON   = al_trans.AL_ON;
-        al_trans.display("\nMON_AL:");
-        al_trans_out.display("REF_AL:");    
+
+        if(verbosity > 2) begin
+            $display("ALARM  REFERENCE:");
+            al_trans.display("     IN");
+            al_trans_out.display("    OUT");
+            $display("-------------------------------------------------------------------------------------------");
+        end
+
         ref2cmp.push_back(al_trans_out);
         mon2cmp.push_back(al_trans);
     endtask

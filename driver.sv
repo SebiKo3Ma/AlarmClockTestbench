@@ -1,4 +1,7 @@
+import config_pkg::*;
+
 virtual class driver #(type TT, type IT);
+
   IT m_vif;
   TT trans;
   string name;
@@ -27,7 +30,7 @@ virtual class driver #(type TT, type IT);
         if(!this.randomize()) $fatal("Delay randomization failed!");
 
         // display the transaction
-        trans.display(name);
+        if(verbosity > 4) trans.display(name);
         
         // send the transaction to the interface
         repeat(delay) @(posedge m_vif.tb_clk);

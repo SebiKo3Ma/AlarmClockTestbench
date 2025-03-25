@@ -19,7 +19,7 @@ class alarm_transaction extends transaction #(alarm_transaction);
   }
 
   function void display(string name = "");
-    $write("%0s: %3t - AL_ON: %1b, STOP_al: %1b, Alarm: %1b\n", 
+    $write("%0s: %4t - AL_ON: %1b, STOP_al: %1b, Alarm: %1b\n", 
     name, $time, AL_ON, STOP_al, Alarm);
   endfunction
   

@@ -1,4 +1,6 @@
 module testbench;
+  import config_pkg::*;
+
   bit clk;
 
   aclk_tconfig_if cif(.clk(clk));
@@ -34,6 +36,11 @@ module testbench;
   end
 
   initial begin
+    if (!$value$plusargs("VERBOSITY=%d", verbosity)) begin
+      verbosity = 0;
+      $display("Using default verbosity!\n");
+    end else $display("Verbosity: %0d\n\n", verbosity);
+
     cfg_gen_params = new(10, 20, 6, 2, 2);
     al_gen_params  = new(10, 10);
     env = new(cif, aif, cfg_gen_params, al_gen_params);

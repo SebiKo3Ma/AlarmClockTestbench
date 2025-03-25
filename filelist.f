@@ -1,5 +1,6 @@
 trans_types.sv
 gen_configs.sv
+config_pkg.sv
 
 config_interface.sv
 alarm_interface.sv

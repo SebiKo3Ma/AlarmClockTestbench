@@ -1,4 +1,7 @@
+import config_pkg::*;
+
 virtual class monitor #(type TT, type IT);
+
   IT m_vif;
   string name;
   
@@ -17,7 +20,7 @@ virtual class monitor #(type TT, type IT);
       trans = new();
       get_sig(trans, m_vif);
 
-      trans.display(name);
+      if(verbosity > 3) trans.display(name);
       
       // push the transaction to the monitor->comparator queue
       mon2cmp.put(trans);

@@ -34,6 +34,6 @@ class alarm_generator;
           //wait for the transaction to be processed before generating another
           @handshake;
         end 
-    $display("Finished generating %0d alarm operations transactions\n", n_al);
+    $display("Finished generating %0d alarm operations transactions                               === FINISH ALARM ===\n", n_al);
   endtask
 endclass

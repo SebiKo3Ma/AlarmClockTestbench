@@ -22,7 +22,7 @@ class environment;
     this.cfg_gen_params = cfg_gen_params;
     this.al_gen_params = al_gen_params;
     cfg_agt  = new(config_inter, cfg_gen_params, "CFG");
-    al_agt   = new(alarm_inter, al_gen_params, "AL");
+    al_agt   = new(alarm_inter, al_gen_params, " AL");
     cfg_mon2ref = new();
     al_mon2ref  = new();
     mon2cmp = new();

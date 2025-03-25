@@ -100,8 +100,8 @@ class coverage;
     endfunction
 
     function void report();
-        $display("=== Time Output Coverage ===");
-        $display("Coverage: %0.2f%%", $get_coverage());
+        $display("=== COVERAGE ===");
+        $display("Coverage: %0.2f%%\n", $get_coverage());
     endfunction
 
 endclass

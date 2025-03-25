@@ -61,6 +61,18 @@ clocking monitor_clk @(posedge tb_clk);
     input S_out0;
 endclocking
 
+property valid_hours;
+    @(monitor_clk)
+    H_out1 == 2'd2 -> H_out0 < 4'd4;
+endproperty
+
+    always @(monitor_clk) begin
+        assert property (valid_hours)
+            $display("PASS: Valid hours set");
+        else 
+            $error("FAIL: Invalid hour set");
+    end
+
   // set all the inputs on the default value
 task init();
     reset    = 1'b1;

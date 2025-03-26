@@ -5,3 +5,5 @@ transcript
 *.do
 *.txt
 *.vstf
+!run_commands.txt
+!coverage_report/coverage_report_final.txt

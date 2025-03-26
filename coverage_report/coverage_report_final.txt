@@ -1,0 +1,607 @@
+COVERGROUP COVERAGE:
+-----------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal    Status               
+                                                                                              
+-----------------------------------------------------------------------------------------------
+ TYPE /trans_types_sv_unit/coverage/time_output        78.61%        100    Uncovered            
+    covered/total bins:                                   122        189                      
+    missing/total bins:                                    67        189                      
+    % Hit:                                             64.55%        100                      
+    type_option.weight=1
+    type_option.goal=100
+    type_option.comment=
+    type_option.strobe=0
+    type_option.merge_instances=auto(1)
+    Coverpoint time_output::ho1                       100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                                27          1    Covered              
+        bin valid_values[1]                                 7          1    Covered              
+        bin valid_values[2]                               355          1    Covered              
+    Coverpoint time_output::ho0                        70.00%        100    Uncovered            
+        covered/total bins:                                 7         10                      
+        missing/total bins:                                 3         10                      
+        % Hit:                                         70.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                                39          1    Covered              
+        bin valid_values[1]                                 0          1    ZERO                 
+        bin valid_values[2]                                 0          1    ZERO                 
+        bin valid_values[3]                                 2          1    Covered              
+        bin valid_values[4]                                 7          1    Covered              
+        bin valid_values[5]                                 9          1    Covered              
+        bin valid_values[6]                                69          1    Covered              
+        bin valid_values[7]                                 0          1    ZERO                 
+        bin valid_values[8]                                38          1    Covered              
+        bin valid_values[9]                                72          1    Covered              
+    Coverpoint time_output::mo1                       100.00%        100    Covered              
+        covered/total bins:                                 6          6                      
+        missing/total bins:                                 0          6                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                                42          1    Covered              
+        bin valid_values[1]                                34          1    Covered              
+        bin valid_values[2]                                34          1    Covered              
+        bin valid_values[3]                                34          1    Covered              
+        bin valid_values[4]                                66          1    Covered              
+        bin valid_values[5]                               179          1    Covered              
+    Coverpoint time_output::mo0                        90.00%        100    Uncovered            
+        covered/total bins:                                 9         10                      
+        missing/total bins:                                 1         10                      
+        % Hit:                                         90.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                                60          1    Covered              
+        bin valid_values[1]                                45          1    Covered              
+        bin valid_values[2]                                 7          1    Covered              
+        bin valid_values[3]                                25          1    Covered              
+        bin valid_values[4]                                 0          1    ZERO                 
+        bin valid_values[5]                                17          1    Covered              
+        bin valid_values[6]                                 9          1    Covered              
+        bin valid_values[7]                                98          1    Covered              
+        bin valid_values[8]                                62          1    Covered              
+        bin valid_values[9]                                66          1    Covered              
+    Coverpoint time_output::so1                       100.00%        100    Covered              
+        covered/total bins:                                 6          6                      
+        missing/total bins:                                 0          6                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                               234          1    Covered              
+        bin valid_values[1]                                73          1    Covered              
+        bin valid_values[2]                                22          1    Covered              
+        bin valid_values[3]                                20          1    Covered              
+        bin valid_values[4]                                20          1    Covered              
+        bin valid_values[5]                                20          1    Covered              
+    Coverpoint time_output::so0                       100.00%        100    Covered              
+        covered/total bins:                                10         10                      
+        missing/total bins:                                 0         10                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                               133          1    Covered              
+        bin valid_values[1]                                35          1    Covered              
+        bin valid_values[2]                                33          1    Covered              
+        bin valid_values[3]                                30          1    Covered              
+        bin valid_values[4]                                30          1    Covered              
+        bin valid_values[5]                                28          1    Covered              
+        bin valid_values[6]                                27          1    Covered              
+        bin valid_values[7]                                26          1    Covered              
+        bin valid_values[8]                                24          1    Covered              
+        bin valid_values[9]                                23          1    Covered              
+    Cross time_output::ho_x                            20.83%        100    Uncovered            
+        covered/total bins:                                 5         24                      
+        missing/total bins:                                19         24                      
+        % Hit:                                         20.83%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin <valid_values[0],valid_values[0]>              10          1    Covered              
+        bin <valid_values[2],valid_values[0]>              29          1    Covered              
+        bin <valid_values[2],valid_values[3]>               2          1    Covered              
+        bin <valid_values[0],valid_values[9]>              17          1    Covered              
+        bin <valid_values[1],valid_values[8]>               7          1    Covered              
+        ignore_bin invalid_hours                          171               Occurred             
+        bin <valid_values[1],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[9]>               0          1    ZERO                 
+    Cross time_output::mo_x                            26.66%        100    Uncovered            
+        covered/total bins:                                16         60                      
+        missing/total bins:                                44         60                      
+        % Hit:                                         26.66%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin <valid_values[0],valid_values[0]>              10          1    Covered              
+        bin <valid_values[1],valid_values[0]>              23          1    Covered              
+        bin <valid_values[5],valid_values[0]>              27          1    Covered              
+        bin <valid_values[2],valid_values[1]>              34          1    Covered              
+        bin <valid_values[5],valid_values[1]>              11          1    Covered              
+        bin <valid_values[0],valid_values[2]>               7          1    Covered              
+        bin <valid_values[0],valid_values[3]>               6          1    Covered              
+        bin <valid_values[3],valid_values[3]>              19          1    Covered              
+        bin <valid_values[0],valid_values[5]>              17          1    Covered              
+        bin <valid_values[5],valid_values[6]>               9          1    Covered              
+        bin <valid_values[0],valid_values[7]>               2          1    Covered              
+        bin <valid_values[1],valid_values[7]>              11          1    Covered              
+        bin <valid_values[5],valid_values[7]>              85          1    Covered              
+        bin <valid_values[3],valid_values[8]>              15          1    Covered              
+        bin <valid_values[5],valid_values[8]>              47          1    Covered              
+        bin <valid_values[4],valid_values[9]>              66          1    Covered              
+        bin <valid_values[2],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[9]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[9]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[9]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[9]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[9]>               0          1    ZERO                 
+    Cross time_output::so_x                           100.00%        100    Covered              
+        covered/total bins:                                60         60                      
+        missing/total bins:                                 0         60                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin <valid_values[0],valid_values[0]>             114          1    Covered              
+        bin <valid_values[1],valid_values[0]>              10          1    Covered              
+        bin <valid_values[2],valid_values[0]>               3          1    Covered              
+        bin <valid_values[3],valid_values[0]>               2          1    Covered              
+        bin <valid_values[4],valid_values[0]>               2          1    Covered              
+        bin <valid_values[5],valid_values[0]>               2          1    Covered              
+        bin <valid_values[0],valid_values[1]>              16          1    Covered              
+        bin <valid_values[1],valid_values[1]>              10          1    Covered              
+        bin <valid_values[2],valid_values[1]>               3          1    Covered              
+        bin <valid_values[3],valid_values[1]>               2          1    Covered              
+        bin <valid_values[4],valid_values[1]>               2          1    Covered              
+        bin <valid_values[5],valid_values[1]>               2          1    Covered              
+        bin <valid_values[0],valid_values[2]>              16          1    Covered              
+        bin <valid_values[1],valid_values[2]>               9          1    Covered              
+        bin <valid_values[2],valid_values[2]>               2          1    Covered              
+        bin <valid_values[3],valid_values[2]>               2          1    Covered              
+        bin <valid_values[4],valid_values[2]>               2          1    Covered              
+        bin <valid_values[5],valid_values[2]>               2          1    Covered              
+        bin <valid_values[0],valid_values[3]>              14          1    Covered              
+        bin <valid_values[1],valid_values[3]>               8          1    Covered              
+        bin <valid_values[2],valid_values[3]>               2          1    Covered              
+        bin <valid_values[3],valid_values[3]>               2          1    Covered              
+        bin <valid_values[4],valid_values[3]>               2          1    Covered              
+        bin <valid_values[5],valid_values[3]>               2          1    Covered              
+        bin <valid_values[0],valid_values[4]>              14          1    Covered              
+        bin <valid_values[1],valid_values[4]>               8          1    Covered              
+        bin <valid_values[2],valid_values[4]>               2          1    Covered              
+        bin <valid_values[3],valid_values[4]>               2          1    Covered              
+        bin <valid_values[4],valid_values[4]>               2          1    Covered              
+        bin <valid_values[5],valid_values[4]>               2          1    Covered              
+        bin <valid_values[0],valid_values[5]>              13          1    Covered              
+        bin <valid_values[1],valid_values[5]>               7          1    Covered              
+        bin <valid_values[2],valid_values[5]>               2          1    Covered              
+        bin <valid_values[3],valid_values[5]>               2          1    Covered              
+        bin <valid_values[4],valid_values[5]>               2          1    Covered              
+        bin <valid_values[5],valid_values[5]>               2          1    Covered              
+        bin <valid_values[0],valid_values[6]>              13          1    Covered              
+        bin <valid_values[1],valid_values[6]>               6          1    Covered              
+        bin <valid_values[2],valid_values[6]>               2          1    Covered              
+        bin <valid_values[3],valid_values[6]>               2          1    Covered              
+        bin <valid_values[4],valid_values[6]>               2          1    Covered              
+        bin <valid_values[5],valid_values[6]>               2          1    Covered              
+        bin <valid_values[0],valid_values[7]>              12          1    Covered              
+        bin <valid_values[1],valid_values[7]>               6          1    Covered              
+        bin <valid_values[2],valid_values[7]>               2          1    Covered              
+        bin <valid_values[3],valid_values[7]>               2          1    Covered              
+        bin <valid_values[4],valid_values[7]>               2          1    Covered              
+        bin <valid_values[5],valid_values[7]>               2          1    Covered              
+        bin <valid_values[0],valid_values[8]>              11          1    Covered              
+        bin <valid_values[1],valid_values[8]>               5          1    Covered              
+        bin <valid_values[2],valid_values[8]>               2          1    Covered              
+        bin <valid_values[3],valid_values[8]>               2          1    Covered              
+        bin <valid_values[4],valid_values[8]>               2          1    Covered              
+        bin <valid_values[5],valid_values[8]>               2          1    Covered              
+        bin <valid_values[0],valid_values[9]>              11          1    Covered              
+        bin <valid_values[1],valid_values[9]>               4          1    Covered              
+        bin <valid_values[2],valid_values[9]>               2          1    Covered              
+        bin <valid_values[3],valid_values[9]>               2          1    Covered              
+        bin <valid_values[4],valid_values[9]>               2          1    Covered              
+        bin <valid_values[5],valid_values[9]>               2          1    Covered              
+ TYPE /trans_types_sv_unit/coverage/time_input         75.00%        100    Uncovered            
+    covered/total bins:                                    49        121                      
+    missing/total bins:                                    72        121                      
+    % Hit:                                             40.49%        100                      
+    type_option.weight=1
+    type_option.goal=100
+    type_option.comment=
+    type_option.strobe=0
+    type_option.merge_instances=auto(1)
+    Coverpoint time_input::hi1                        100.00%        100    Covered              
+        covered/total bins:                                 3          3                      
+        missing/total bins:                                 0          3                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                                32          1    Covered              
+        bin valid_values[1]                                32          1    Covered              
+        bin valid_values[2]                               241          1    Covered              
+    Coverpoint time_input::hi0                         80.00%        100    Uncovered            
+        covered/total bins:                                 8         10                      
+        missing/total bins:                                 2         10                      
+        % Hit:                                         80.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                                35          1    Covered              
+        bin valid_values[1]                                12          1    Covered              
+        bin valid_values[2]                                 0          1    ZERO                 
+        bin valid_values[3]                                24          1    Covered              
+        bin valid_values[4]                                11          1    Covered              
+        bin valid_values[5]                                 3          1    Covered              
+        bin valid_values[6]                                 4          1    Covered              
+        bin valid_values[7]                                 0          1    ZERO                 
+        bin valid_values[8]                                42          1    Covered              
+        bin valid_values[9]                                28          1    Covered              
+    Coverpoint time_input::mi1                        100.00%        100    Covered              
+        covered/total bins:                                 6          6                      
+        missing/total bins:                                 0          6                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                                18          1    Covered              
+        bin valid_values[1]                                20          1    Covered              
+        bin valid_values[2]                                11          1    Covered              
+        bin valid_values[3]                                11          1    Covered              
+        bin valid_values[4]                                 3          1    Covered              
+        bin valid_values[5]                                50          1    Covered              
+    Coverpoint time_input::mi0                         70.00%        100    Uncovered            
+        covered/total bins:                                 7         10                      
+        missing/total bins:                                 3         10                      
+        % Hit:                                         70.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[0]                                10          1    Covered              
+        bin valid_values[1]                                 7          1    Covered              
+        bin valid_values[2]                                 3          1    Covered              
+        bin valid_values[3]                                 0          1    ZERO                 
+        bin valid_values[4]                                 0          1    ZERO                 
+        bin valid_values[5]                                 5          1    Covered              
+        bin valid_values[6]                                 0          1    ZERO                 
+        bin valid_values[7]                                11          1    Covered              
+        bin valid_values[8]                                23          1    Covered              
+        bin valid_values[9]                                54          1    Covered              
+    Coverpoint time_input::ldt                        100.00%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin auto[0]                                       294          1    Covered              
+        bin auto[1]                                        95          1    Covered              
+    Coverpoint time_input::lda                        100.00%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin auto[0]                                       182          1    Covered              
+        bin auto[1]                                       207          1    Covered              
+    Cross time_input::hi_x                             33.33%        100    Uncovered            
+        covered/total bins:                                 8         24                      
+        missing/total bins:                                16         24                      
+        % Hit:                                         33.33%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin <valid_values[0],valid_values[0]>              10          1    Covered              
+        bin <valid_values[0],valid_values[1]>               9          1    Covered              
+        bin <valid_values[1],valid_values[1]>               3          1    Covered              
+        bin <valid_values[2],valid_values[0]>              25          1    Covered              
+        bin <valid_values[2],valid_values[3]>              24          1    Covered              
+        bin <valid_values[1],valid_values[4]>              11          1    Covered              
+        bin <valid_values[0],valid_values[9]>              13          1    Covered              
+        bin <valid_values[1],valid_values[8]>              18          1    Covered              
+        ignore_bin invalid_hours                           46               Occurred             
+        bin <valid_values[1],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[9]>               0          1    ZERO                 
+    Cross time_input::mi_x                             16.66%        100    Uncovered            
+        covered/total bins:                                10         60                      
+        missing/total bins:                                50         60                      
+        % Hit:                                         16.66%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin <valid_values[0],valid_values[0]>              10          1    Covered              
+        bin <valid_values[2],valid_values[1]>               7          1    Covered              
+        bin <valid_values[4],valid_values[2]>               3          1    Covered              
+        bin <valid_values[0],valid_values[5]>               5          1    Covered              
+        bin <valid_values[3],valid_values[7]>              11          1    Covered              
+        bin <valid_values[5],valid_values[8]>              23          1    Covered              
+        bin <valid_values[0],valid_values[9]>               3          1    Covered              
+        bin <valid_values[1],valid_values[9]>              20          1    Covered              
+        bin <valid_values[2],valid_values[9]>               4          1    Covered              
+        bin <valid_values[5],valid_values[9]>              27          1    Covered              
+        bin <valid_values[1],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[0]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[1]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[2]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[3]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[5]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[6]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[5],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[0],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[1],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[8]>               0          1    ZERO                 
+        bin <valid_values[3],valid_values[9]>               0          1    ZERO                 
+        bin <valid_values[4],valid_values[9]>               0          1    ZERO                 
+    Cross time_input::ld_x                             75.00%        100    Uncovered            
+        covered/total bins:                                 3          4                      
+        missing/total bins:                                 1          4                      
+        % Hit:                                         75.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin <auto[0],auto[0]>                              87          1    Covered              
+        bin <auto[1],auto[0]>                              95          1    Covered              
+        bin <auto[0],auto[1]>                             207          1    Covered              
+        bin <auto[1],auto[1]>                               0          1    ZERO                 
+ TYPE /trans_types_sv_unit/coverage/alarm_operations 
+                                                       75.00%        100    Uncovered            
+    covered/total bins:                                     8         12                      
+    missing/total bins:                                     4         12                      
+    % Hit:                                             66.66%        100                      
+    type_option.weight=1
+    type_option.goal=100
+    type_option.comment=
+    type_option.strobe=0
+    type_option.merge_instances=auto(1)
+    Coverpoint alarm_operations::al                    50.00%        100    Uncovered            
+        covered/total bins:                                 1          2                      
+        missing/total bins:                                 1          2                      
+        % Hit:                                         50.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin auto[0]                                       389          1    Covered              
+        bin auto[1]                                         0          1    ZERO                 
+    Coverpoint alarm_operations::on                   100.00%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin auto[0]                                        17          1    Covered              
+        bin auto[1]                                       372          1    Covered              
+    Coverpoint alarm_operations::st                   100.00%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin auto[0]                                       240          1    Covered              
+        bin auto[1]                                       149          1    Covered              
+    Cross alarm_operations::al_x                       50.00%        100    Uncovered            
+        covered/total bins:                                 3          6                      
+        missing/total bins:                                 3          6                      
+        % Hit:                                         50.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin <auto[0],auto[0],auto[0]>                      17          1    Covered              
+        bin <auto[0],auto[1],auto[0]>                     223          1    Covered              
+        bin <auto[0],auto[1],auto[1]>                     149          1    Covered              
+        ignore_bin invalid_transactions                     0               ZERO                 
+        bin <auto[1],auto[0],auto[0]>                       0          1    ZERO                 
+        bin <auto[1],auto[1],auto[0]>                       0          1    ZERO                 
+        bin <auto[0],auto[0],auto[1]>                       0          1    ZERO                 
+ TYPE /trans_types_sv_unit/coverage/illegal_inputs     93.88%        100    Uncovered            
+    covered/total bins:                                    43         48                      
+    missing/total bins:                                     5         48                      
+    % Hit:                                             89.58%        100                      
+    type_option.weight=1
+    type_option.goal=100
+    type_option.comment=
+    type_option.strobe=0
+    type_option.merge_instances=auto(1)
+    Coverpoint illegal_inputs::il_hi1                 100.00%        100    Covered              
+        covered/total bins:                                 2          2                      
+        missing/total bins:                                 0          2                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[2]                               241          1    Covered              
+        bin valid_values[3]                                84          1    Covered              
+    Coverpoint illegal_inputs::il_hi0                  91.66%        100    Uncovered            
+        covered/total bins:                                11         12                      
+        missing/total bins:                                 1         12                      
+        % Hit:                                         91.66%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[4]                                11          1    Covered              
+        bin valid_values[5]                                 3          1    Covered              
+        bin valid_values[6]                                 4          1    Covered              
+        bin valid_values[7]                                 0          1    ZERO                 
+        bin valid_values[8]                                42          1    Covered              
+        bin valid_values[9]                                28          1    Covered              
+        bin valid_values[10]                               21          1    Covered              
+        bin valid_values[11]                               19          1    Covered              
+        bin valid_values[12]                               19          1    Covered              
+        bin valid_values[13]                               35          1    Covered              
+        bin valid_values[14]                              113          1    Covered              
+        bin valid_values[15]                               23          1    Covered              
+    Coverpoint illegal_inputs::il_mi1                 100.00%        100    Covered              
+        covered/total bins:                                10         10                      
+        missing/total bins:                                 0         10                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[6]                                14          1    Covered              
+        bin valid_values[7]                                16          1    Covered              
+        bin valid_values[8]                                34          1    Covered              
+        bin valid_values[9]                                16          1    Covered              
+        bin valid_values[10]                               17          1    Covered              
+        bin valid_values[11]                               16          1    Covered              
+        bin valid_values[12]                               35          1    Covered              
+        bin valid_values[13]                               37          1    Covered              
+        bin valid_values[14]                               83          1    Covered              
+        bin valid_values[15]                                8          1    Covered              
+    Coverpoint illegal_inputs::il_mi0                 100.00%        100    Covered              
+        covered/total bins:                                 6          6                      
+        missing/total bins:                                 0          6                      
+        % Hit:                                        100.00%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin valid_values[10]                               34          1    Covered              
+        bin valid_values[11]                               50          1    Covered              
+        bin valid_values[12]                              107          1    Covered              
+        bin valid_values[13]                               28          1    Covered              
+        bin valid_values[14]                               22          1    Covered              
+        bin valid_values[15]                               35          1    Covered              
+    Cross illegal_inputs::hvalid_x                     77.77%        100    Uncovered            
+        covered/total bins:                                14         18                      
+        missing/total bins:                                 4         18                      
+        % Hit:                                         77.77%        100                      
+        type_option.weight=1
+        type_option.goal=100
+        type_option.comment=
+        bin <valid_values[2],valid_values[6]>               4          1    Covered              
+        bin <valid_values[2],valid_values[5]>               3          1    Covered              
+        bin <valid_values[2],valid_values[8]>              24          1    Covered              
+        bin <valid_values[2],valid_values[9]>              15          1    Covered              
+        bin <valid_values[2],valid_values[10]>              9          1    Covered              
+        bin <valid_values[2],valid_values[11]>             15          1    Covered              
+        bin <valid_values[3],valid_values[10]>             12          1    Covered              
+        bin <valid_values[3],valid_values[11]>              4          1    Covered              
+        bin <valid_values[2],valid_values[14]>             83          1    Covered              
+        bin <valid_values[2],valid_values[13]>             35          1    Covered              
+        bin <valid_values[2],valid_values[15]>              4          1    Covered              
+        bin <valid_values[3],valid_values[12]>             19          1    Covered              
+        bin <valid_values[3],valid_values[14]>             30          1    Covered              
+        bin <valid_values[3],valid_values[15]>             19          1    Covered              
+        ignore_bin valid_hours                              0               ZERO                 
+        bin <valid_values[2],valid_values[4]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[7]>               0          1    ZERO                 
+        bin <valid_values[2],valid_values[12]>              0          1    ZERO                 
+        bin <valid_values[3],valid_values[13]>              0          1    ZERO                 
+
+TOTAL COVERGROUP COVERAGE: 80.62%  COVERGROUP TYPES: 4

@@ -7,8 +7,8 @@ program run_test(aclk_tconfig_if cif, aclk_alop_if aif);
   
   initial begin
     if(test_name == "run_test") begin
-      cfg_gen_params = new(10, 20, 9, 1, 0);
-      al_gen_params  = new(10, 20);
+      cfg_gen_params = new(50, 60, 9, 1, 0);
+      al_gen_params  = new(50, 60);
       env = new(cif, aif, cfg_gen_params, al_gen_params);
       env.run();
     end

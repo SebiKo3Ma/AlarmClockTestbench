@@ -24,7 +24,9 @@ module testbench;
     .S_out1    (cif.S_out1),
     .S_out0    (cif.S_out0)
   );
-  il_test test(.cif(cif), .aif(aif));
+  run_test run_test(cif, aif);
+  op_test op_test(cif, aif);
+  il_test il_test(cif, aif);
 
   // standard clock given as input
   initial begin
@@ -37,6 +39,10 @@ module testbench;
       verbosity = 0;
       $display("Using default verbosity!\n");
     end else $display("Verbosity: %0d\n\n", verbosity);
+
+    if (!$value$plusargs("TEST=%s", test_name)) begin
+      test_name = "run_test"; // Default test
+    end
   end
 
   initial begin

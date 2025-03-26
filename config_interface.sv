@@ -66,12 +66,12 @@ property valid_hours;
     H_out1 == 2'd2 -> H_out0 < 4'd4;
 endproperty
 
-    always @(monitor_clk) begin
-        assert property (valid_hours) begin
-            //do nothing
-        end else 
-            $error("FAIL: Invalid hour set");
-    end
+
+    assert property (valid_hours) begin
+        //do nothing
+    end else 
+        $error("FAIL: Invalid hour set");
+
 
   //set all the inputs on the default value
 task init();

@@ -2,11 +2,13 @@ import config_pkg::*;
 
 class reference;
 
-    local logic [6:0]   hour,
+    local logic [5:0]   hour,
                         minute,
                         second,
                         al_hour,
                         al_minute;
+
+    local logic [2:0]   h_d1;
 
     local int al_sound;
 
@@ -85,11 +87,20 @@ class reference;
 
     endfunction
 
+    function void getHour();
+        if(hour >= 20)
+            h_d1 = 2;
+        else if(hour >= 10)
+            h_d1 = 1;
+        else h_d1 = 0;
+    endfunction
+
     task process_config(mailbox mon2ref, ref config_transaction mon2cmp[$], ref config_transaction ref2cmp[$]);
         mon2ref.get(cfg_trans);
         getTime();
         getAlarm();
         getReset();
+        getHour();
 
         cfg_trans_out = new();
 
@@ -103,8 +114,8 @@ class reference;
         cfg_trans_out.LD_time  = cfg_trans.LD_time;
         cfg_trans_out.LD_alarm = cfg_trans.LD_alarm;
 
-        cfg_trans_out.H_out1 = (hour / 10) % 10;
-        cfg_trans_out.H_out0 = hour % 10;
+        cfg_trans_out.H_out1 = h_d1;
+        cfg_trans_out.H_out0 = hour - (h_d1 * 10);
         cfg_trans_out.M_out1 = (minute / 10) % 10;
         cfg_trans_out.M_out0 = minute % 10;   
         cfg_trans_out.S_out1 = (second / 10) % 10;

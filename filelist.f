@@ -22,5 +22,9 @@ compare.sv
 
 coverage.sv
 environment.sv
+
+run_test.sv
+op_test.sv
+il_test.sv
 clock.sv
 testbench.sv

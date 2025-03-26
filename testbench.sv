@@ -24,10 +24,7 @@ module testbench;
     .S_out1    (cif.S_out1),
     .S_out0    (cif.S_out0)
   );
-
-  environment env;
-  cfg_gen_configs cfg_gen_params;
-  al_gen_configs  al_gen_params;
+  il_test test(.cif(cif), .aif(aif));
 
   // standard clock given as input
   initial begin
@@ -40,11 +37,6 @@ module testbench;
       verbosity = 0;
       $display("Using default verbosity!\n");
     end else $display("Verbosity: %0d\n\n", verbosity);
-
-    cfg_gen_params = new(10, 20, 6, 2, 2);
-    al_gen_params  = new(10, 10);
-    env = new(cif, aif, cfg_gen_params, al_gen_params);
-    env.run();
   end
 
   initial begin

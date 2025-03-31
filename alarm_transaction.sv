@@ -14,7 +14,7 @@ class alarm_transaction extends transaction #(alarm_transaction);
   }
 
   constraint few_irrelevant_stops{
-    (!AL_ON) -> STOP_al dist {1:/1, 0:/9};
+    (!AL_ON) -> STOP_al dist {1:/3, 0:/7};
     STOP_al dist {1:/4, 0:/6};
   }
 

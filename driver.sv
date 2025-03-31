@@ -17,7 +17,7 @@ virtual class driver #(type TT, type IT);
   rand int delay;
 
   constraint delay_bounds{
-    delay inside {[1:10]};
+    delay inside {[10:100]};
   }
 
   task run(mailbox gen2driv, event handshake);

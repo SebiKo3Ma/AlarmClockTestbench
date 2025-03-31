@@ -1,11 +1,10 @@
 vlog -sv -mfcu -f ./filelist.f
-vsim -voptargs="+acc" -c work.testbench -do ".main clear; coverage save -onexit ucdb/ucdb_run_test.ucdb; run -all; quit" +VERBOSITY=1 +TEST="run_test"
-vsim -c -viewcov ucdb/ucdb_run_test.ucdb -do "coverage report -file coverage_report/coverage_report_final.txt -byfile -detail -noannotate -option -cvg; quit"
 
+vsim -voptargs="+acc" -c work.testbench -do ".main clear; coverage save -onexit ucdb/ucdb_run_test.ucdb; run -all; quit" +VERBOSITY=1 +TEST="run_test"
 
 vsim -voptargs="+acc" -c work.testbench -do ".main clear; coverage save -onexit ucdb/ucdb_op_test.ucdb; run -all; quit" +VERBOSITY=1 +TEST="op_test"
-vsim -c -viewcov ucdb/ucdb_op_test.ucdb -do "coverage report -file coverage_report/coverage_report_final.txt -byfile -detail -noannotate -option -cvg; quit"
-
 
 vsim -voptargs="+acc" -c work.testbench -do ".main clear; coverage save -onexit ucdb/ucdb_il_test.ucdb; run -all; quit" +VERBOSITY=1 +TEST="il_test"
-vsim -c -viewcov ucdb/ucdb_il_test.ucdb -do "coverage report -file coverage_report/coverage_report_final.txt -byfile -detail -noannotate -option -cvg; quit"
+
+vcover merge -64 coverage_report/merge_ucdb.ucdb ucdb/*.ucdb
+ vsim -c -viewcov coverage_report/merge_ucdb.ucdb -do "coverage report -file coverage_report/coverage_report_final.txt -byfile -detail -noannotate -option -cvg; quit"

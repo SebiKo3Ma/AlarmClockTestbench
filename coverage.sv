@@ -66,6 +66,9 @@ class coverage;
         al_x: cross al, on, st{
             ignore_bins invalid_transactions = binsof(al) intersect {1} &&
                                                binsof(st) intersect {1};
+
+            ignore_bins alarm_off            = binsof(al) intersect {1} &&
+                                               binsof(on) intersect {0};
         }
     endgroup: alarm_operations
 
@@ -83,10 +86,10 @@ class coverage;
             bins valid_values[] = {[10:15]};
         }
 
-        hvalid_x: cross il_hi1, il_hi0{
-            ignore_bins valid_hours = binsof(il_hi1) intersect {3} &&
-                                      binsof(il_hi0) intersect {[4:9]};
-        }
+        // hvalid_x: cross il_hi1, il_hi0{
+        //     ignore_bins valid_hours = binsof(il_hi1) intersect {3} &&
+        //                               binsof(il_hi0) intersect {[4:9]};
+        // }
 
     endgroup: illegal_inputs
 

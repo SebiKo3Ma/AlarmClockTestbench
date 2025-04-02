@@ -6,5 +6,6 @@ transcript
 *.txt
 *.vstf
 .ucdb
+ucdb
+coverage_report
 !run_commands.txt
-!coverage_report/coverage_report_final.txt

@@ -15,6 +15,8 @@ class reference;
     config_transaction cfg_trans, cfg_trans_out;
     alarm_transaction al_trans, al_trans_out;
 
+    int i, load;
+
     function new();
         hour = 0;
         minute = 0;
@@ -24,6 +26,8 @@ class reference;
         al_sound = 0;
         cfg_trans_out = new();
         al_trans_out = new();
+        i = 0;
+        load = 0;
     endfunction
 
     function void loadTime();
@@ -34,22 +38,24 @@ class reference;
     endfunction
 
     function void getTime();
-        if(!cfg_trans.LD_time) begin
-            //increase time every second
-            second = second + 1;
-            if(second == 60) begin
-                second = 0;
-                minute = minute + 1;
-                if(minute == 60) begin
-                    minute = 0;
-                    hour = hour + 1;
-                    if(hour == 24) begin
-                        hour = 0;
+        if(!cfg_trans.reset) begin
+            if(!cfg_trans.LD_time) begin
+                //increase time every second
+                second = second + 1;
+                if(second == 60) begin
+                    second = 0;
+                    minute = minute + 1;
+                    if(minute == 60) begin
+                        minute = 0;
+                        hour = hour + 1;
+                        if(hour >= 24) begin
+                            hour = 0;
+                        end
                     end
                 end
+            end else begin
+                loadTime();
             end
-        end else begin
-            loadTime();
         end
     endfunction
 
@@ -63,27 +69,43 @@ class reference;
 
     function void getReset();
         if(cfg_trans.reset) begin
-            loadTime();
+            if(!load) begin
+                loadTime();
+                load = 1;
+            end
             al_hour = 0;
             al_minute = 0;
             al_sound = 0;
-        end
+        end else load = 0;
     endfunction
 
-    function int isAlarm();
-        if(al_sound)
-            return 1;
+    int prev, wasStopped;
 
-        if(al_trans.AL_ON && !al_trans.STOP_al) begin
-            if(hour == al_hour && minute == al_minute && second == 0) begin
-                al_sound = 1;
-            end
-        end
+    function int isAlarm();
+        //$display("Alarm %d: %d:%d", i, al_hour, al_minute);
+        //illegals
+        if(hour >= 24 || minute >= 60) return 0;
 
         if(al_trans.STOP_al) begin
             al_sound = 0;
         end
-        else return 0;
+
+        if(al_trans.AL_ON && !al_trans.STOP_al) begin
+            prev = al_sound;
+            if(hour == al_hour && minute == al_minute && second == 0) begin
+                al_sound = 1;
+            end
+
+            if(!prev && !wasStopped) return 0;
+
+        end
+
+        wasStopped = al_trans.STOP_al;
+
+        if(al_sound)
+            return 1;
+        else
+            return 0;
 
     endfunction
 
@@ -135,6 +157,7 @@ class reference;
 
     task process_alarm(mailbox mon2ref, ref alarm_transaction mon2cmp[$], ref alarm_transaction ref2cmp[$]);
         mon2ref.get(al_trans);
+        i++;
 
         al_trans_out = new();
 

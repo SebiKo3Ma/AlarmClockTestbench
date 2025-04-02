@@ -31,7 +31,7 @@ class compare #(type TT);
           if(verbosity > 0) begin
             ref2cmp[i].display({name, "_REF"});
             mon2cmp[i].display({name, "_CMP"});
-            $display("Transaction %0d: Incorrect %0d\n", nr_total, nr_failed);
+            $display("Transaction %0d: Incorrect %0d -------------------------------------------------------------- INCORRECT\n", nr_total, nr_failed);
           end
         end
       end

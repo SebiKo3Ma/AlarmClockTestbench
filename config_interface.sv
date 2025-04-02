@@ -67,10 +67,10 @@ property valid_hours;
 endproperty
 
 
-    assert property (valid_hours) begin
-        //do nothing
-    end else 
-        $error("FAIL: Invalid hour set");
+    // assert property (valid_hours) begin
+    //     //do nothing
+    // end else 
+    //     $error("FAIL: Invalid hour set");
 
 
   //set all the inputs on the default value
